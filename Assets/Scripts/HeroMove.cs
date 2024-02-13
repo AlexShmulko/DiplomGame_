@@ -19,6 +19,7 @@ public class HeroMove : MonoBehaviour
     private float dirY = 0f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private Collider2D attackArea;
 
     private enum MovementState
     {
@@ -29,6 +30,9 @@ public class HeroMove : MonoBehaviour
     }
     MovementState state;
 
+    int attackAnimation = 1;
+    bool isAttacking = false;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -36,14 +40,26 @@ public class HeroMove : MonoBehaviour
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<BoxCollider2D>();
+        attackArea.enabled = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (isAttacking)
+        {
+            moveSpeed = 0f;
+            attackArea.enabled = true;
+        }
+        else
+        {
+            moveSpeed = 3f;
+            attackArea.enabled = false;
+        }
         dirX = Input.GetAxisRaw("Horizontal");
         dirY = Input.GetAxisRaw("Vertical");
         player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
+
 
         if (Input.GetButtonDown("Jump") && player.velocity.y > -.1f && player.velocity.y < .1f)
         {
@@ -52,23 +68,67 @@ public class HeroMove : MonoBehaviour
         }
 
         UpdateAnimation();
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Attack();
+        }
+        //else
+        //{
+        //    isAttacking = false;
+        //    anim.SetBool("isAttacking", isAttacking);
+        //}
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack_" + attackAnimation))
+        {
+            isAttacking = true;
+            anim.SetBool("isAttacking", isAttacking);
+        }
+        else 
+        {
+            isAttacking = false;
+            anim.SetBool("isAttacking", isAttacking);
+        } 
+    }
+
+    private void Attack()
+    {
+        if (!isAttacking)
+        {
+            isAttacking = true;
+            anim.SetBool("isAttacking", isAttacking);
+            //Debug.Log(isAttacking);
+
+            if (attackAnimation < 2)
+            {
+                attackAnimation++;
+            }
+            else attackAnimation = 1;
+            
+            anim.Play("attack_" + attackAnimation);
+        }
     }
 
     private void UpdateAnimation()
     {
         state = MovementState.idle;
 
-        if (dirX > 0f)
+        if (dirX > 0f && !isAttacking)
         {
             state = MovementState.run;
             sprite.flipX = false;
+            attackArea.transform.position = new Vector2(player.position.x + 0.7f, attackArea.transform.position.y);
+            attackArea.transform.rotation = Quaternion.Euler(0, 0, 0);
+            playerCollider.offset = new Vector2(-0.2f, playerCollider.offset.y);
+            //player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
             //attackPoint.position = new Vector2(player.position.x + 0.5f, player.position.y);
         }
-        else if (dirX < 0f)
+        else if (dirX < 0f && !isAttacking)
         {
             state = MovementState.run;
             sprite.flipX = true;
-            //attackPoint.position = new Vector2(player.position.x - 0.5f, player.position.y);
+            attackArea.transform.position = new Vector2(player.position.x - 0.7f, attackArea.transform.position.y);
+            attackArea.transform.rotation = Quaternion.Euler(0,180,0);
+            playerCollider.offset = new Vector2(0.2f, playerCollider.offset.y);
+            //player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
         }
         else
         {

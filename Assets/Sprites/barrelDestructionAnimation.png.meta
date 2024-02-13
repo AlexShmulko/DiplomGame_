@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63af9c12def9c36499641afc8d30e77c
+guid: 2ec615bf024c0ef4684c34f5edf35e0f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: runAnimation_0
+      name: barrelDestructionAnimation_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba2a1783f9dc7ea47b67b4639b619d18
-      internalID: -481572702
+      spriteID: 9106c39cd9a5b6a43b056e1a5e9376c5
+      internalID: 2038462250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runAnimation_1
+      name: barrelDestructionAnimation_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3921428269450904aaad1531f0b0a193
-      internalID: 1777650324
+      spriteID: 5955616428001b448885d755fcbe8b75
+      internalID: -2066046916
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runAnimation_2
+      name: barrelDestructionAnimation_2
       rect:
         serializedVersion: 2
-        x: 161
+        x: 128
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5970e2a3323568c459e104d1b03355f9
-      internalID: -1867913448
+      spriteID: 44c1fa762e5b1524fa0378d240a88198
+      internalID: 507210233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runAnimation_3
+      name: barrelDestructionAnimation_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 192
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24c0d7faf8263c64d8e2a18d67c114b3
-      internalID: -1009805990
+      spriteID: 5ec08c7f5efbc0142a4cfcaaad761e76
+      internalID: 1862849412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runAnimation_4
+      name: barrelDestructionAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccbd4d03a4aad594c98766f3da0918f9
+      internalID: -1164258249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrelDestructionAnimation_5
       rect:
         serializedVersion: 2
         x: 320
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d49ae23c4207924499f15d87ce563d52
-      internalID: 1519011292
+      spriteID: 2d8f34c166ee74a438f3412033edafd5
+      internalID: -556200992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runAnimation_5
+      name: barrelDestructionAnimation_6
       rect:
         serializedVersion: 2
-        x: 400
+        x: 384
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c198233919baa6a43b44fc5a566d845a
-      internalID: -542804089
+      spriteID: 9c24ec28e38d4a84a895807bb5070ed7
+      internalID: -76109670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runAnimation_6
+      name: barrelDestructionAnimation_7
       rect:
         serializedVersion: 2
-        x: 480
+        x: 448
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d8d997e4c5fd2f47b6ddbad7d192092
-      internalID: -921189642
+      spriteID: 20904a90321836a44bbac8731b2eaab5
+      internalID: 102842540
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: runAnimation_7
+      name: barrelDestructionAnimation_8
       rect:
         serializedVersion: 2
-        x: 560
+        x: 512
         y: 0
-        width: 80
-        height: 80
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,92 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7953cffddcc7824eadd49ea74b0ff18
-      internalID: 434591235
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: runAnimation_8
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 80
-        height: 80
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d353f55032547d4994ca3ba97e56251
-      internalID: 697707062
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: runAnimation_9
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 80
-        height: 80
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4ab1326296b4d94f93fb54768395380
-      internalID: 2106185832
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: runAnimation_10
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 80
-        height: 80
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4b77f9f9b3bf7a47893f84999262b35
-      internalID: 709402945
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: runAnimation_11
-      rect:
-        serializedVersion: 2
-        x: 880
-        y: 0
-        width: 80
-        height: 80
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 887fa3f46db01d542a9dfd639dfd1ad3
-      internalID: -1855989651
+      spriteID: fdbeaeb7e3192664fa0847c21f16f751
+      internalID: -1352270049
       vertices: []
       indices: 
       edges: []
@@ -385,18 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      runAnimation_0: -481572702
-      runAnimation_1: 1777650324
-      runAnimation_10: 709402945
-      runAnimation_11: -1855989651
-      runAnimation_2: -1867913448
-      runAnimation_3: -1009805990
-      runAnimation_4: 1519011292
-      runAnimation_5: -542804089
-      runAnimation_6: -921189642
-      runAnimation_7: 434591235
-      runAnimation_8: 697707062
-      runAnimation_9: 2106185832
+      barrelDestructionAnimation_0: 2038462250
+      barrelDestructionAnimation_1: -2066046916
+      barrelDestructionAnimation_2: 507210233
+      barrelDestructionAnimation_3: 1862849412
+      barrelDestructionAnimation_4: -1164258249
+      barrelDestructionAnimation_5: -556200992
+      barrelDestructionAnimation_6: -76109670
+      barrelDestructionAnimation_7: 102842540
+      barrelDestructionAnimation_8: -1352270049
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
