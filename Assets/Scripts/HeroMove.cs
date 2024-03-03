@@ -21,6 +21,8 @@ public class HeroMove : MonoBehaviour
     [SerializeField] private float jumpForce = 14f;
     [SerializeField] private Collider2D attackArea;
 
+    HeroStats stats;
+
     private enum MovementState
     {
         idle,
@@ -41,6 +43,7 @@ public class HeroMove : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<BoxCollider2D>();
         attackArea.enabled = false;
+        stats = gameObject.GetComponent<HeroStats>();
     }
 
     // Update is called once per frame
@@ -51,7 +54,14 @@ public class HeroMove : MonoBehaviour
             moveSpeed = 0f;
             attackArea.enabled = true;
         }
-        else
+
+        if (stats.isHealing)
+        {
+            moveSpeed = 0f;
+            Input.ResetInputAxes();
+        }
+
+        if(!isAttacking && !stats.isHealing)
         {
             moveSpeed = 3f;
             attackArea.enabled = false;
