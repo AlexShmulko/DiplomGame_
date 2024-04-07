@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - barrel
+  - Block
+  - Wall
+  - RoomPoint
+  - Rooms
   layers:
   - Default
   - TransparentFX
@@ -11,12 +16,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Items
+  - Fon
+  - Hero
+  - Room
+  - blocks
+  - walls
   - 
   - 
   - 
@@ -40,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fon
+    uniqueID: 17502171
+    locked: 0
+  - name: Hero
+    uniqueID: 3807149789
     locked: 0
