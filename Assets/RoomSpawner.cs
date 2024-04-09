@@ -15,10 +15,12 @@ public class RoomSpawner : MonoBehaviour
         None
     }
 
-    private int maxRoomsToSpawn = 30;
+    private int maxRoomsToSpawn = 20;
     private static int roomsSpawnedCount = 0;
 
     private RoomVariants variants;
+    private GameObject roomParent;
+
     private int rand;
     private bool spawned = false;
     private float waitTime = 3f;
@@ -27,9 +29,18 @@ public class RoomSpawner : MonoBehaviour
 
     private void Start()
     {
+
+        roomParent = GameObject.Find("Grid");
+
+        if (roomParent == null)
+        {
+            Debug.LogError("Room parent object not found!");
+            return;
+        }
+
         variants = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomVariants>();
         //Destroy(gameObject, waitTime);
-        Invoke("Spawn", 0.2f);
+        Invoke("Spawn", 0.1f);
     }
 
     public void Spawn()
@@ -42,25 +53,35 @@ public class RoomSpawner : MonoBehaviour
             {
                 case Direction.Top:
                     rand = Random.Range(0, variants.topRooms.Length);
-                    newRoom = Instantiate(variants.topRooms[rand], transform.position, variants.topRooms[rand].transform.rotation);
+                    //newRoom = Instantiate(variants.topRooms[rand], transform.position, variants.topRooms[rand].transform.rotation);
+                    newRoom = Instantiate(variants.topRooms[rand], transform.position, Quaternion.identity);
+                    //newRoom = Instantiate(variants.topRooms[rand], transform.position, Quaternion.identity, roomParent.transform);
                     break;
                 case Direction.Bottom:
                     rand = Random.Range(0, variants.bottomRooms.Length);
-                    newRoom = Instantiate(variants.bottomRooms[rand], transform.position, variants.bottomRooms[rand].transform.rotation);
+                    //newRoom = Instantiate(variants.bottomRooms[rand], transform.position, variants.bottomRooms[rand].transform.rotation);
+                    newRoom = Instantiate(variants.bottomRooms[rand], transform.position, Quaternion.identity);
+                    //newRoom = Instantiate(variants.bottomRooms[rand], transform.position, Quaternion.identity, roomParent.transform);
                     break;
                 case Direction.Right:
                     rand = Random.Range(0, variants.rightRooms.Length);
-                    newRoom = Instantiate(variants.rightRooms[rand], transform.position, variants.rightRooms[rand].transform.rotation);
+                    //newRoom = Instantiate(variants.rightRooms[rand], transform.position, variants.rightRooms[rand].transform.rotation);
+                    newRoom = Instantiate(variants.rightRooms[rand], transform.position, Quaternion.identity);
+                    //newRoom = Instantiate(variants.rightRooms[rand], transform.position, /*Quaternion.identity,*/variants.rightRooms[rand].transform.rotation);
                     break;
                 case Direction.Left:
                     rand = Random.Range(0, variants.leftRooms.Length);
-                    newRoom = Instantiate(variants.leftRooms[rand], transform.position, variants.leftRooms[rand].transform.rotation);
+                    //newRoom = Instantiate(variants.leftRooms[rand], transform.position, variants.leftRooms[rand].transform.rotation);
+                    newRoom = Instantiate(variants.leftRooms[rand], transform.position, Quaternion.identity);
+                    //newRoom = Instantiate(variants.leftRooms[rand], transform.position, /*Quaternion.identity, */variants.leftRooms[rand].transform.rotation);
                     break;
             }
 
             if (newRoom != null)
             {
-                CheckRoomPoints(newRoom);
+                //newRoom.transform.SetParent(GameObject.Find("Grid").transform);
+                newRoom.transform.SetParent(roomParent.transform);
+                //CheckRoomPoints(newRoom);
                 spawned = true;
                 roomsSpawnedCount++; 
                 
@@ -74,16 +95,16 @@ public class RoomSpawner : MonoBehaviour
                     Vector3 objectPosition = roomPoint.transform.position;
 
                     // Проверить, не записаны ли уже координаты этой точки
-                    if (!recordedRoomPointPositions.Contains(objectPosition))
+                    if (!recordedRoomPointPositions.Contains(objectPosition) && objectPosition != Vector3.zero)
                     {
                         // Если координаты ещё не записаны, добавить их в список и вывести
                         recordedRoomPointPositions.Add(objectPosition);
-                        //Debug.Log("RoomPoint coordinates: " + objectPosition);
+                        Debug.Log("RoomPoint coordinates: " + objectPosition);
                     }
                     else
                     {
                         // Если координаты уже записаны, удалить новую точку
-                        //Debug.Log("RoomPoint at coordinates " + objectPosition + " already exists. Deleting...");
+                        Debug.Log("RoomPoint at coordinates " + objectPosition + " already exists. Deleting...");
                         Destroy(roomPoint);
                     }
                 }
