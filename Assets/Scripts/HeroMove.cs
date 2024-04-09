@@ -5,11 +5,16 @@ using UnityEngine;
 
 public class HeroMove : MonoBehaviour
 {
+
+    private float SPEED;
+
     private Rigidbody2D player;
     private Animator anim;
     private SpriteRenderer sprite;
     private BoxCollider2D playerCollider;
-    //public Transform attackPoint;
+
+    public float deshLenght = 3f;
+    private float defaultObstacleCheckPosition;
 
     [SerializeField] private bool onPlatform = false;
     [SerializeField] private float step = 0f;
@@ -17,9 +22,11 @@ public class HeroMove : MonoBehaviour
 
     private float dirX = 0f;
     private float dirY = 0f;
-    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 14f;
+    private float currentDirX = 0f; 
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpForce;
     [SerializeField] private Collider2D attackArea;
+    [SerializeField] private Collider2D obstacleCheck;
 
     HeroStats stats;
 
@@ -34,21 +41,38 @@ public class HeroMove : MonoBehaviour
 
     int attackAnimation = 1;
     bool isAttacking = false;
+    bool isDashStarting = false;
+    bool isDashFinishing = false;
+    bool isJumpStarting = false;
+    bool isJumpFinishing = false;
+    bool isFalling = false;
+    bool isFlying = false;
 
-    // Start is called before the first frame update
     private void Start()
     {
+
         player = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         playerCollider = GetComponent<BoxCollider2D>();
         attackArea.enabled = false;
         stats = gameObject.GetComponent<HeroStats>();
+        SPEED = moveSpeed;
+        defaultObstacleCheckPosition = Math.Abs(gameObject.transform.Find("ObstacleCheck").transform.position.x - gameObject.transform.position.x);
+        
+        isFalling = gameObject.GetComponentInChildren<GroundCheck>().isFalling;
+        anim.SetBool("isFalling", isFalling);
     }
 
-    // Update is called once per frame
+
     private void Update()
     {
+        //Debug.Log(isFalling);
+        isFalling = gameObject.GetComponentInChildren<GroundCheck>().isFalling;
+        anim.SetBool("isFalling", isFalling);
+
+        deshLenght = gameObject.GetComponentInChildren<ObstacleCheck>().heroDeshLenght;
+
         if (isAttacking)
         {
             moveSpeed = 0f;
@@ -61,32 +85,37 @@ public class HeroMove : MonoBehaviour
             Input.ResetInputAxes();
         }
 
-        if(!isAttacking && !stats.isHealing)
+        if(!isAttacking && !stats.isHealing && !isDashStarting && !isDashFinishing && !isJumpStarting && !isFalling && !isFlying && !isJumpFinishing)
         {
-            moveSpeed = 3f;
+            moveSpeed = SPEED;
             attackArea.enabled = false;
         }
+
+        if (isFalling)
+        {
+            moveSpeed = SPEED;
+        }
+
+        if (isFlying || isJumpFinishing)
+        {
+            moveSpeed = SPEED;
+        }
+
         dirX = Input.GetAxisRaw("Horizontal");
         dirY = Input.GetAxisRaw("Vertical");
-        player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
-
-
-        if (Input.GetButtonDown("Jump") && player.velocity.y > -.1f && player.velocity.y < .1f)
+        if(dirX != 0)
         {
-            Debug.Log(player.velocity.y);
-            player.velocity = new Vector2(player.velocity.x, jumpForce);
+            currentDirX = dirX;
         }
+        player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
 
         UpdateAnimation();
         if (Input.GetButtonDown("Fire1"))
         {
             Attack();
         }
-        //else
-        //{
-        //    isAttacking = false;
-        //    anim.SetBool("isAttacking", isAttacking);
-        //}
+
+
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("attack_" + attackAnimation))
         {
             isAttacking = true;
@@ -96,7 +125,95 @@ public class HeroMove : MonoBehaviour
         {
             isAttacking = false;
             anim.SetBool("isAttacking", isAttacking);
-        } 
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dirX != 0)
+        {
+            Debug.Log(dirX);
+            isDashStarting = true;
+            anim.SetBool("isDashStarting", isDashStarting);
+            //player.velocity = new Vector2(3f*currentDirX , player.velocity.y);
+            //player.AddForce(new Vector2(-5f, 0));
+            moveSpeed = 0f;
+        }
+
+        if (isDashFinishing)
+        {
+            player.AddForce(new Vector2(currentDirX * 50f, 0));
+        }
+        if (isDashStarting)
+        {
+            player.AddForce(new Vector2(currentDirX * 20f, 0));
+        }
+
+        //if (isJumpFinishing)
+        //{
+        //    player.gravityScale = 0.1f;
+        //}
+        //else player.gravityScale = 1f;
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            isJumpStarting = true;
+            anim.SetBool("isJumpStarting", isJumpStarting);
+            moveSpeed = 0f;
+        }
+    }
+
+    private void JumpStart()
+    {
+        moveSpeed = 3f;
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 5f);
+        isJumpStarting = false;
+        anim.SetBool("isJumpStarting", isJumpStarting);
+        isJumpFinishing = true;
+        anim.SetBool("isJumpFinishing", isJumpFinishing);
+        //player.gravityScale = 0.01f;
+    }
+
+    private void JumpFinish()
+    {
+        isJumpFinishing = false;
+        anim.SetBool("isJumpFinishing", isJumpFinishing);
+        //isFlying = true;
+        //anim.SetBool("isFlying", isFlying);
+    }
+
+    private void FlyFinish()
+    {
+        isFlying = false;
+        anim.SetBool("isFlying", isFlying);
+        if (!isDashStarting)
+        {
+            player.gravityScale = 1f;
+        }
+    }
+
+    private void AirDashPause()
+    {
+        player.gravityScale = 0.01f;
+        Debug.Log("#");
+    }
+
+    private void DashSatrt()
+    {
+        isJumpFinishing = false;
+        anim.SetBool("isJumpFinishing", isJumpFinishing);
+        //gameObject.SetActive(false);
+        Debug.Log(dirX);
+        gameObject.transform.position = new Vector2(transform.position.x + deshLenght * currentDirX, transform.position.y);
+        isDashStarting = false;
+        anim.SetBool("isDashStarting", isDashStarting);
+        isDashFinishing = true;
+        anim.SetBool("isDashFinishing", isDashFinishing);
+    }
+
+    private void DashFinish()
+    {
+        isDashFinishing = false;
+        anim.SetBool("isDashFinishing", isDashFinishing);
+        player.gravityScale = 1f;
     }
 
     private void Attack()
@@ -105,7 +222,8 @@ public class HeroMove : MonoBehaviour
         {
             isAttacking = true;
             anim.SetBool("isAttacking", isAttacking);
-            //Debug.Log(isAttacking);
+            isJumpFinishing = false;
+            anim.SetBool("isJumpFinishing", isJumpFinishing);
 
             if (attackAnimation < 2)
             {
@@ -127,9 +245,8 @@ public class HeroMove : MonoBehaviour
             sprite.flipX = false;
             attackArea.transform.position = new Vector2(player.position.x + 0.7f, attackArea.transform.position.y);
             attackArea.transform.rotation = Quaternion.Euler(0, 0, 0);
+            obstacleCheck.transform.position = new Vector2(gameObject.transform.position.x + defaultObstacleCheckPosition, obstacleCheck.transform.position.y);
             playerCollider.offset = new Vector2(-0.2f, playerCollider.offset.y);
-            //player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
-            //attackPoint.position = new Vector2(player.position.x + 0.5f, player.position.y);
         }
         else if (dirX < 0f && !isAttacking)
         {
@@ -137,22 +254,13 @@ public class HeroMove : MonoBehaviour
             sprite.flipX = true;
             attackArea.transform.position = new Vector2(player.position.x - 0.7f, attackArea.transform.position.y);
             attackArea.transform.rotation = Quaternion.Euler(0,180,0);
+            obstacleCheck.transform.position = new Vector2(gameObject.transform.position.x - defaultObstacleCheckPosition, obstacleCheck.transform.position.y);
             playerCollider.offset = new Vector2(0.2f, playerCollider.offset.y);
-            //player.velocity = new Vector2(dirX * moveSpeed, player.velocity.y);
         }
         else
         {
             state = MovementState.idle;
         }
-
-        //if (player.velocity.y > .1f)
-        //{
-        //    state = MovementState.jump;
-        //}
-        //else if (player.velocity.y < -.1f)
-        //{
-        //    state = MovementState.fall;
-        //}
 
         anim.SetInteger("state", (int)state);
     }
