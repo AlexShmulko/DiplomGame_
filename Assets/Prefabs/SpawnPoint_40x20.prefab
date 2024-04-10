@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7647464259309749667}
   - component: {fileID: -2552528859694573328}
   m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: RoomPoint
+  m_Name: SpawnPoint_40x20
+  m_TagString: RoomPoint_40x20
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe322ed25ab525248aed994d40a29caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 0
+  direction: 4
   raycastDistanceX: 40
   raycastDistanceY: 10

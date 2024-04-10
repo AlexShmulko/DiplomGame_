@@ -10,7 +10,7 @@ public class WallsDetecterVer : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("blocks"))
         {   
-            Debug.Log("blabla");
+            //Debug.Log("blabla");
             ReplaceChildren();
         }
     }

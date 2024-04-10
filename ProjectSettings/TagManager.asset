@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - RoomPoint
   - Rooms
+  - RoomPoint_40x20
+  - NowRoom
   layers:
   - Default
   - TransparentFX
