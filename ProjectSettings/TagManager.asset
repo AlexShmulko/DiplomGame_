@@ -11,6 +11,10 @@ TagManager:
   - Rooms
   - RoomPoint_40x20
   - NowRoom
+  - CheckPoint
+  - StartRoom
+  - Trigger1
+  - Trigger2
   layers:
   - Default
   - TransparentFX

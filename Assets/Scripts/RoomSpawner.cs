@@ -26,12 +26,12 @@ public class RoomSpawner : MonoBehaviour
     private static int roomsSpawnedCount = 0;
 
     private int smallRoomsCounter = 0;
-    private int smallRoomsMax = 6;
+    private int smallRoomsMax = 7;
 
     private int RoomsCounter_40x20 = 0;
-    private int RoomsMax_40x20 = 1;
+    private int RoomsMax_40x20 = 2;
 
-    private int maxRoomsToSpawn = 7;
+    private int maxRoomsToSpawn = 9;
 
     private RoomVariants variants;
     private RoomVariantsBig variantsBig;
@@ -68,7 +68,7 @@ public class RoomSpawner : MonoBehaviour
         variants = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomVariants>();
         variantsBig = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomVariantsBig>();
         //Destroy(gameObject, waitTime);
-        Invoke("Spawn", 0.1f);
+        Invoke("Spawn", 0.3f);
     }
 
     public void Spawn()
@@ -81,7 +81,7 @@ public class RoomSpawner : MonoBehaviour
         {
             GameObject newRoom = null;
 
-            if (spawnPointTag == "RoomPoint" && smallRoomsCounter < 6)
+            if (spawnPointTag == "RoomPoint" && smallRoomsCounter < 7)
             {   
                 smallRoomsCounter ++;
                 Debug.Log("SmallCount");
@@ -92,7 +92,7 @@ public class RoomSpawner : MonoBehaviour
                 gameObject.SetActive(false);
             }
             
-            if (spawnPointTag == "RoomPoint_40x20" && RoomsCounter_40x20 < 1)
+            if (spawnPointTag == "RoomPoint_40x20" && RoomsCounter_40x20 < 2)
             {
                 RoomsCounter_40x20 ++;
                 newRoom = SpawnSpecialRoom();
