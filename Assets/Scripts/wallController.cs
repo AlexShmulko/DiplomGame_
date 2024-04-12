@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class wallController : MonoBehaviour
 {
@@ -8,9 +9,14 @@ public class wallController : MonoBehaviour
 
     public Vector3 cameraChangePos;
     public Vector3 playerChangePos;
+
+    Vector3 spawnPosition;
+
     private Camera cam;
 
     public int idroom;
+
+    private int rand;
 
     private RoomsVariants variants;
 
@@ -20,13 +26,9 @@ public class wallController : MonoBehaviour
 
     private GameObject newRoom;
 
-    public int checkNewRoom = 0;
-
     public int playerRoomId;
 
     public int returnRoom;
-
-    public int tecroomid;
 
     public int nextroomid;
 
@@ -40,7 +42,7 @@ public class wallController : MonoBehaviour
 
     public bool isleadWall;
 
-    public GameObject blablakeka;
+    private GameObject proshRoomCopy;
 
     private GameObject sp;
 
@@ -71,14 +73,14 @@ public class wallController : MonoBehaviour
 
         idroom = dataManager.GetRoomId();
 
-        //dataManager.SetRoomId(0);
-
         cam = Camera.main.GetComponent<Camera>();
 
-        sp = GameObject.FindGameObjectWithTag("RoomPoint");
+        /*rand = Random.Range(0, variants.Rooms.Length);  
 
-        Debug.Log(sp.name + sp.tag);
+        proshRoomCopy = variants.Rooms[rand];
 
+        Debug.Log(proshRoomCopy.tag + " " + proshRoomCopy.name);
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -90,51 +92,118 @@ public class wallController : MonoBehaviour
             {   
                 dataManager.SetLastRoomId(idroom);
                 whws = dataManager.GetLastRoomId();
-                //checkNewRoom = 1;
-                //dataManager.SetMyVariable(checkNewRoom);
+
                 playerRoomId = dataManager.GetRoomId();
                 playerRoomId++;
                 dataManager.SetRoomId(playerRoomId);
                 nextroomid = playerRoomId;
+
                 Spawn();
-                //isSpawned = true;
-                other.transform.position += playerChangePos;
-                cam.transform.position += cameraChangePos;
+
+                if (direction == Direction.SmallTop)
+                {
+                    other.transform.position += playerChangePos;
+                    cam.transform.position += cameraChangePos;
+                }
+
+                else if (direction == Direction.SmallBottom)
+                {
+                    other.transform.position -= playerChangePos;
+                    cam.transform.position -= cameraChangePos;
+                } 
+                
+                else if (direction == Direction.SmallLeft)
+                {
+                    other.transform.position -= playerChangePos;
+                    cam.transform.position -= cameraChangePos;
+                } 
+                
+                else if (direction == Direction.SmallRight)
+                {
+                    other.transform.position += playerChangePos;
+                    cam.transform.position += cameraChangePos;
+                }
+
                 leadroom  = 1;
+
                 proshlayaRoom = dataManager.GetGameObject(idroom);
-                blablakeka = proshlayaRoom;
+                proshRoomCopy = proshlayaRoom;
                 isleadWall = false;
-                Invoke("Blablakek", 0.5f);
+                Invoke("GetObjectActive", 0.1f);
                 
             }else if (leadroom == 1)
-            {
-                other.transform.position += playerChangePos;
-                cam.transform.position += cameraChangePos;
+            {   
+                if (direction == Direction.SmallTop)
+                {
+                    other.transform.position += playerChangePos;
+                    cam.transform.position += cameraChangePos;
+                }
+
+                else if (direction == Direction.SmallBottom)
+                {
+                    other.transform.position -= playerChangePos;
+                    cam.transform.position -= cameraChangePos;
+                } 
+                
+                else if (direction == Direction.SmallLeft)
+                {
+                    other.transform.position -= playerChangePos;
+                    cam.transform.position -= cameraChangePos;
+                } 
+                
+                else if (direction == Direction.SmallRight)
+                {
+                    other.transform.position += playerChangePos;
+                    cam.transform.position += cameraChangePos;
+                }
+
                 proshlayaRoom = dataManager.GetGameObject(nextroomid);
-                blablakeka = proshlayaRoom;
+                proshRoomCopy = proshlayaRoom;
                 isleadWall = true;
-                Blablakek();
+                GetObjectActive();
+
                 proshlayaRoom = dataManager.GetGameObject(idroom);
-                blablakeka = proshlayaRoom;
+                proshRoomCopy = proshlayaRoom;
                 isleadWall = false;
-                Invoke("Blablakek", 0.5f);
+                Invoke("GetObjectActive", 0.1f);
             }
 
             else if (leadroom == 0 && backroom == 1)
             {   
-                other.transform.position -= playerChangePos;
-                cam.transform.position -= cameraChangePos;
-                proshlayaRoom = dataManager.GetGameObject(returnRoom);
-                blablakeka = proshlayaRoom;
-                isleadWall = true;
-                Blablakek();
-                proshlayaRoom = dataManager.GetGameObject(idroom);
-                blablakeka = proshlayaRoom;
-                isleadWall = false;
-                Invoke("Blablakek", 0.5f);
-            }
+                if (direction == Direction.SmallTop)
+                {
+                    other.transform.position += playerChangePos;
+                    cam.transform.position += cameraChangePos;
+                }
 
-            
+                else if (direction == Direction.SmallBottom)
+                {
+                    other.transform.position -= playerChangePos;
+                    cam.transform.position -= cameraChangePos;
+                } 
+                
+                else if (direction == Direction.SmallLeft)
+                {
+                    other.transform.position -= playerChangePos;
+                    cam.transform.position -= cameraChangePos;
+                } 
+                
+                else if (direction == Direction.SmallRight)
+                {
+                    other.transform.position += playerChangePos;
+                    cam.transform.position += cameraChangePos;
+                }
+
+                proshlayaRoom = dataManager.GetGameObject(returnRoom);
+                proshRoomCopy = proshlayaRoom;
+                isleadWall = true;
+                GetObjectActive();
+
+                proshlayaRoom = dataManager.GetGameObject(idroom);
+                proshRoomCopy = proshlayaRoom;
+                isleadWall = false;
+                Invoke("GetObjectActive", 0.1f);
+            }
         }
 
         if(other.CompareTag("Wall") && leadroom == 0 && backroom == 0)
@@ -152,13 +221,6 @@ public class wallController : MonoBehaviour
     {   
         if(other.CompareTag("Player"))
         {
-            Debug.Log("jojaidjaf");
-            checkNewRoom = 0;
-            dataManager.SetMyVariable(checkNewRoom);
-        }
-
-        if(other.CompareTag("Trigger1"))
-        {
             
         }
     }
@@ -167,17 +229,50 @@ public class wallController : MonoBehaviour
     {
         newRoom = null;
 
-        Vector3 spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+        rand = Random.Range(0, variants.Rooms.Length);
 
-        newRoom = Instantiate(variants.Rooms[0], spawnPosition, Quaternion.identity);
+        proshRoomCopy = variants.Rooms[rand];
+
+        if (direction == Direction.SmallTop)
+        {
+            if (proshRoomCopy.tag == "Room_20x10")
+            {
+                spawnPosition = PresentRoom.position + new Vector3(0, 10f, 0);
+            }
+        }
+
+        else if (direction == Direction.SmallBottom)
+        {
+            if (proshRoomCopy.tag == "Room_20x10")
+            {
+                spawnPosition = PresentRoom.position - new Vector3(0, 10f, 0);
+            }
+        } 
+        
+        else if (direction == Direction.SmallLeft)
+        {
+            if (proshRoomCopy.tag == "Room_20x10")
+            {
+                spawnPosition = PresentRoom.position - new Vector3(20f, 0, 0);
+            }
+        } 
+        
+        else if (direction == Direction.SmallRight)
+        {
+            if (proshRoomCopy.tag == "Room_20x10")
+            {
+                spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+            }
+        }
+
+        newRoom = Instantiate(variants.Rooms[rand], spawnPosition, Quaternion.identity);
 
         dataManager.AddGameObject(nextroomid, newRoom);
+    }    
 
-    }
-
-    void Blablakek()
+    void GetObjectActive()
     {
-        SetObjectActive(blablakeka, isleadWall);
+        SetObjectActive(proshRoomCopy, isleadWall);
     }
 
     void SetObjectActive(GameObject gameObject, bool isactive)

@@ -9,17 +9,18 @@ TagManager:
   - Wall
   - RoomPoint
   - Rooms
-  - RoomPoint_40x20
   - NowRoom
   - CheckPoint
   - StartRoom
   - Trigger1
   - Trigger2
+  - Room_20x10
+  - RoomPoint_40x20
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - player
   - Water
   - UI
   - Items

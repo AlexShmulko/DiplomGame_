@@ -2,20 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamMove : MonoBehaviour
+public class CameraCollisionHandler : MonoBehaviour
 {
-    public GameObject hero;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = new Vector3(hero.transform.position.x, hero.transform.position.y + 2f, transform.position.z);
-    }
 
     public string stopTag = "Trigger1"; // Тег объекта, останавливающего камеру
     private bool stopCamera = false; // Флаг, указывающий, нужно ли останавливать камеру
@@ -51,4 +39,5 @@ public class CamMove : MonoBehaviour
 
         // Если камера не должна останавливаться, здесь можно добавить логику перемещения камеры
     }
+
 }

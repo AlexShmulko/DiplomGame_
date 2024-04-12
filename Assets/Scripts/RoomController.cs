@@ -42,15 +42,15 @@ public class RoomController : MonoBehaviour
 
         dataManager.SetRoomId(0);
 
-        spawner = GameObject.FindGameObjectWithTag("RoomPoint");
+        //spawner = GameObject.FindGameObjectWithTag("RoomPoint");
 
         //spawnerTransform = startRoom.transform.Find("RoomPoint");
 
-        spawnerTransform = spawner.transform;
+        //spawnerTransform = spawner.transform;
 
         PresentRoom = startRoom;
 
-        Debug.Log(PresentRoom.name + " " + PresentRoom.tag);
+        //Debug.Log(PresentRoom.name + " " + PresentRoom.tag);
     } 
 
     void FixedUpdate()
