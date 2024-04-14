@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class HeroMove : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class HeroMove : MonoBehaviour
     private BoxCollider2D playerCollider;
 
     public float deshLenght = 3f;
+    public float jumpLenght = 5f;
     private float defaultObstacleCheckPosition;
+    private string groundType;
 
     [SerializeField] private bool onPlatform = false;
     [SerializeField] private float step = 0f;
@@ -27,6 +30,7 @@ public class HeroMove : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private Collider2D attackArea;
     [SerializeField] private Collider2D obstacleCheck;
+    [SerializeField] private Tilemap platformsTilemap;
 
     HeroStats stats;
 
@@ -59,7 +63,8 @@ public class HeroMove : MonoBehaviour
         stats = gameObject.GetComponent<HeroStats>();
         SPEED = moveSpeed;
         defaultObstacleCheckPosition = Math.Abs(gameObject.transform.Find("ObstacleCheck").transform.position.x - gameObject.transform.position.x);
-        
+
+        groundType = gameObject.GetComponentInChildren<GroundCheck>().groundType;
         isFalling = gameObject.GetComponentInChildren<GroundCheck>().isFalling;
         anim.SetBool("isFalling", isFalling);
     }
@@ -71,7 +76,10 @@ public class HeroMove : MonoBehaviour
         isFalling = gameObject.GetComponentInChildren<GroundCheck>().isFalling;
         anim.SetBool("isFalling", isFalling);
 
+        groundType = gameObject.GetComponentInChildren<GroundCheck>().groundType;
+
         deshLenght = gameObject.GetComponentInChildren<ObstacleCheck>().heroDeshLenght;
+        jumpLenght = gameObject.GetComponentInChildren<ObstacleCheckTop>().heroJumpLenght;
 
         if (isAttacking)
         {
@@ -153,18 +161,31 @@ public class HeroMove : MonoBehaviour
         //}
         //else player.gravityScale = 1f;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !Input.GetKeyDown(KeyCode.S))
         {
             isJumpStarting = true;
             anim.SetBool("isJumpStarting", isJumpStarting);
             moveSpeed = 0f;
         }
+
+        if (Input.GetKeyDown(KeyCode.S) && groundType == "Platform")
+        {
+            platformsTilemap.GetComponentInChildren<CompositeCollider2D>().isTrigger = true;
+            Invoke(nameof(UpdatePlatformsCollider), 3f);
+            Debug.Log("IOP");
+        }
+    }
+
+    private void UpdatePlatformsCollider()
+    {
+        platformsTilemap.GetComponentInChildren<CompositeCollider2D>().isTrigger = false;
     }
 
     private void JumpStart()
     {
+        playerCollider.offset = new Vector2(0.8f * currentDirX, playerCollider.offset.y);
         moveSpeed = 3f;
-        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 5f);
+        gameObject.transform.position = new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + jumpLenght);
         isJumpStarting = false;
         anim.SetBool("isJumpStarting", isJumpStarting);
         isJumpFinishing = true;
@@ -247,6 +268,10 @@ public class HeroMove : MonoBehaviour
             attackArea.transform.rotation = Quaternion.Euler(0, 0, 0);
             obstacleCheck.transform.position = new Vector2(gameObject.transform.position.x + defaultObstacleCheckPosition, obstacleCheck.transform.position.y);
             playerCollider.offset = new Vector2(-0.2f, playerCollider.offset.y);
+            if (isFalling)
+            {
+                playerCollider.offset = new Vector2(0.8f * currentDirX, playerCollider.offset.y);
+            }
         }
         else if (dirX < 0f && !isAttacking)
         {
@@ -256,6 +281,10 @@ public class HeroMove : MonoBehaviour
             attackArea.transform.rotation = Quaternion.Euler(0,180,0);
             obstacleCheck.transform.position = new Vector2(gameObject.transform.position.x - defaultObstacleCheckPosition, obstacleCheck.transform.position.y);
             playerCollider.offset = new Vector2(0.2f, playerCollider.offset.y);
+            if (isFalling)
+            {
+                playerCollider.offset = new Vector2(0.8f * currentDirX, playerCollider.offset.y);
+            }
         }
         else
         {

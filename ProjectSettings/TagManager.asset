@@ -7,6 +7,8 @@ TagManager:
   - barrel
   - Obstacle
   - Ground
+  - Platform
+  - ObstacleTop
   layers:
   - Default
   - TransparentFX
