@@ -58,7 +58,7 @@ public class RoomController : MonoBehaviour
 
         
         a = dataManager.GetMyVariable();
-        Debug.Log(a + "это а");
+        //Debug.Log(a + "это а");
 
         if (a == 1)
         {

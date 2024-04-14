@@ -15,7 +15,8 @@ TagManager:
   - Trigger1
   - Trigger2
   - Room_20x10
-  - RoomPoint_40x20
+  - Room_40x10
+  - Room_20x20
   layers:
   - Default
   - TransparentFX

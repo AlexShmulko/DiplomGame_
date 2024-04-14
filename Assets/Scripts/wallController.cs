@@ -50,6 +50,8 @@ public class wallController : MonoBehaviour
 
     public Direction direction;
 
+    public BottomDirection bottomDirection;
+
     //public GameObject PresentRoom;
     
     private Transform PresentRoom;
@@ -60,6 +62,14 @@ public class wallController : MonoBehaviour
         SmallBottom,
         SmallLeft,
         SmallRight,
+        None
+    }
+
+    public enum BottomDirection
+    {
+        BottomLeft,
+        Bottom,
+        BottomRight,
         None
     }
 
@@ -74,13 +84,6 @@ public class wallController : MonoBehaviour
         idroom = dataManager.GetRoomId();
 
         cam = Camera.main.GetComponent<Camera>();
-
-        /*rand = Random.Range(0, variants.Rooms.Length);  
-
-        proshRoomCopy = variants.Rooms[rand];
-
-        Debug.Log(proshRoomCopy.tag + " " + proshRoomCopy.name);
-        */
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -229,40 +232,296 @@ public class wallController : MonoBehaviour
     {
         newRoom = null;
 
+        sp = dataManager.GetGameObject(idroom);
+
         rand = Random.Range(0, variants.Rooms.Length);
 
         proshRoomCopy = variants.Rooms[rand];
 
-        if (direction == Direction.SmallTop)
+        /*if (direction == Direction.SmallLeft || direction == Direction.SmallRight)
         {
-            if (proshRoomCopy.tag == "Room_20x10")
+            while(proshRoomCopy.tag == "Room_20x20")
             {
-                spawnPosition = PresentRoom.position + new Vector3(0, 10f, 0);
+                rand = Random.Range(0, variants.Rooms.Length);
+                proshRoomCopy = variants.Rooms[rand];
+            }
+        }*/
+
+        if (direction == Direction.SmallTop)
+        {   
+            if (sp.tag == "Room_20x20")
+            {
+                if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(40f, 20f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(40f, 3f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(40f, 3f, 0);
+                }
+            }
+            else if (sp.tag == "Room_40x10")
+            {
+                if (bottomDirection == BottomDirection.Bottom)
+                { 
+                    if (proshRoomCopy.tag == "Room_20x10")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(10f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_40x10")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(0f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(10f, 27f, 0);
+                    }
+                }
+                else if (bottomDirection == BottomDirection.BottomLeft)
+                {
+                    if (proshRoomCopy.tag == "Room_20x10")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(0, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_40x10")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(0f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(0f, 27f, 0);
+                    }
+                }
+                else if (bottomDirection == BottomDirection.BottomRight)
+                {
+                    if (proshRoomCopy.tag == "Room_20x10")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(20f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_40x10")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(0f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(20f, 27f, 0);
+                    }
+                }
+            }
+            else if (sp.tag == "Room_20x10")
+            {
+                if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0, 10f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 10f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 27f, 0);
+                }
             }
         }
 
         else if (direction == Direction.SmallBottom)
-        {
-            if (proshRoomCopy.tag == "Room_20x10")
+        {   
+            if (sp.tag == "Room_20x20")
+            {   
+                if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(-40f, 20f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(-40f, 27f, 0);
+                } 
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(-40f, 27f, 0);
+                }
+            }
+            else if (sp.tag == "Room_20x10")
             {
-                spawnPosition = PresentRoom.position - new Vector3(0, 10f, 0);
+                if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0, 10f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 10f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 3f, 0);
+                }
+            }
+            else if (sp.tag == "Room_40x10")
+            {
+                if (bottomDirection == BottomDirection.Bottom)
+                {
+                    if (proshRoomCopy.tag == "Room_20x10")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(-10f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_40x10")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(0f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(-10f, 3f, 0);
+                    }
+                }
+                else if (bottomDirection == BottomDirection.BottomLeft)
+                {
+                    if (proshRoomCopy.tag == "Room_20x10")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(0, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_40x10")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(0f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(0f, 3f, 0);
+                    }
+                }
+                else if (bottomDirection == BottomDirection.BottomRight)
+                {
+                    if (proshRoomCopy.tag == "Room_20x10")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(-20f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_40x10")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(0f, 10f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(-20f, 3f, 0);
+                    }
+                }
             }
         } 
         
         else if (direction == Direction.SmallLeft)
         {
-            if (proshRoomCopy.tag == "Room_20x10")
+            if (sp.tag == "Room_40x10")
             {
-                spawnPosition = PresentRoom.position - new Vector3(20f, 0, 0);
+                if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(20f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(40f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(20f, -17f, 0);
+                }
             }
-        } 
+            else if (sp.tag == "Room_20x10")
+            {
+                if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(40f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(20f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(20f, -17f, 0);
+                }
+            }
+            else if (sp.tag == "Room_20x20")
+            {
+                if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 17f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(-20f, 17f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+                }
+            } 
+        }
         
         else if (direction == Direction.SmallRight)
-        {
-            if (proshRoomCopy.tag == "Room_20x10")
-            {
-                spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+        {   
+            if (idroom == 0)
+            {   
+                if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(20f, 17f, 0);
+                }
             }
+            else if (sp.tag == "Room_40x10")
+            {
+                if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(40f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(40f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(40f, 17, 0);
+                }
+            }
+            else if (sp.tag == "Room_20x10")
+            {
+                if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(20f, 17, 0);
+                }
+            }
+            else if (sp.tag == "Room_20x20")
+            {
+                if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(60f, -17f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(60f, -17f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(60f, 0, 0);
+                }
+            } 
         }
 
         newRoom = Instantiate(variants.Rooms[rand], spawnPosition, Quaternion.identity);
