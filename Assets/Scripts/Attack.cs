@@ -6,6 +6,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     private Animator anim;
+    private Robber robber;
     private void Start()
     {
         
@@ -14,9 +15,13 @@ public class Attack : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("barrel"))
         {
-
             anim = collision.gameObject.GetComponent<Animator>();
             anim.Play("barrelDestruction");
+        }
+        if (collision.gameObject.CompareTag("Robber"))
+        {
+            robber = collision.gameObject.GetComponent<Robber>();
+            robber.TakeDamage();
         }
     }
 }

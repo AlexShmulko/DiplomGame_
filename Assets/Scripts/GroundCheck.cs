@@ -4,30 +4,33 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    public bool isFalling = true;
-    public string groundType = "Ground";
+    public bool onGround = true;
+    public string groundType;
+    public GameObject ground;
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Ground" || collision.transform.tag == "Platform")
+        if(collision.transform.tag == "SolidGround" || collision.transform.tag == "SoftGround")
         {
-            isFalling = true;
+            onGround = false;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "Ground" || collision.transform.tag == "Platform")
+        Debug.Log("Oo");
+        if (collision.transform.tag == "SolidGround" || collision.transform.tag == "SoftGround")
         {
-            isFalling = false;
+            onGround = true;
+            ground = collision.gameObject;
         }
-        if (collision.transform.tag == "Ground")
+        if (collision.transform.tag == "SolidGround")
         {
-            groundType = "Ground";
+            groundType = "SolidGround";
         }
-        if (collision.transform.tag == "Platform")
+        if (collision.transform.tag == "SoftGround")
         {
-            groundType = "Platform";
+            groundType = "SoftGround";
         }
     }
 

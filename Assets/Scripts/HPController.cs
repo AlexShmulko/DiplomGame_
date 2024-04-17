@@ -14,12 +14,12 @@ public class HPController : MonoBehaviour
     {
         transform = GetComponent<RectTransform>();
         heroStats = hero.GetComponent<HeroStats>();
-        HeroHP = heroStats.HeroHP;
+        HeroHP = heroStats.heroHP;
     }
 
     void Update()
     {
-        HeroHP = heroStats.HeroHP;
+        HeroHP = heroStats.heroHP;
         transform.offsetMax = new Vector2(-(1852 - HeroHP * 5.3f), transform.offsetMax.y);
     }
 }

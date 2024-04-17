@@ -9,6 +9,10 @@ TagManager:
   - Ground
   - Platform
   - ObstacleTop
+  - SolidGround
+  - SoftGround
+  - AttributeView
+  - Robber
   layers:
   - Default
   - TransparentFX

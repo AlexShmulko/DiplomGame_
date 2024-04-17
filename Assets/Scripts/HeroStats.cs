@@ -2,67 +2,45 @@ using Microsoft.Unity.VisualStudio.Editor;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class HeroStats : MonoBehaviour
 {
-    //public Image healPotion_1;
-    //public Image healPotion_2;
-    //public Image healPotion_3;
+    private SaveManager saveManager;
 
-    public CanvasRenderer healPotion_1;
-    public CanvasRenderer healPotion_2;
-    public CanvasRenderer healPotion_3;
+    // Значения различных статов героя
+    //+
+    public int heroHP;
+    public int healPotion;
+    public int healingSize;
 
-    public int HeroHP = 100;
-    public int HealPotion = 3;
+    public int souls;
+    public int heroStrength;
+    public int heroAgility;
+    public int heroIntelligence;
 
-    private int healingSize = 25;
-    public bool isHealing = false;
+    public float dashLength = 3f;
+    public float jumpHeight = 3f;
+    public int damage = 15;
 
-    private Animator animator;
-
-    // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void downloadStats()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("I press healing!");
-            GetHealing();
-        }
+        heroHP = saveManager.CurrentHeroHP;
+        healPotion = saveManager.HealPotions;
+        healingSize = saveManager.HealingSize;
 
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && isHealing)
-        {
-            isHealing = false;
-            animator.SetBool("isHealing", isHealing);
-        }
-    }
+        souls = saveManager.Souls;
+        heroStrength = saveManager.HeroStrength;
+        heroAgility = saveManager.HeroAgility;
+        heroIntelligence = saveManager.HeroIntelligence;
 
-    public void GetDamage()
-    {
-
-    }
-
-    public void GetHealing()
-    {
-        if(HealPotion != 0 && !isHealing && HeroHP != 100)
-        {
-            Input.ResetInputAxes();
-            isHealing = true;
-            animator.SetBool("isHealing", true);
-            animator.Play("healing");
-            if (HeroHP + healingSize > 100) HeroHP = 100;
-            if (HeroHP + healingSize <= 100) HeroHP += healingSize;
-            HealPotion--;
-            if(HealPotion == 2) healPotion_3.gameObject.SetActive(false);
-            if(HealPotion == 1) healPotion_2.gameObject.SetActive(false);
-            if(HealPotion == 0) healPotion_1.gameObject.SetActive(false);
-        }
+        dashLength = 3f + heroAgility * 0.2f;
+        damage = 15 + heroStrength;
     }
 }
