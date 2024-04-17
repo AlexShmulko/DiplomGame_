@@ -7,6 +7,8 @@ public class DataManager : MonoBehaviour
 
     private int roomId;
 
+    private int wallCount;
+
     private int lastRoomId;
 
     private Dictionary<int, GameObject> gameObjectsDictionary = new Dictionary<int, GameObject>();
@@ -31,6 +33,16 @@ public class DataManager : MonoBehaviour
         // Пример создания массива из 10 игровых объектов при инициализации DataManager
         gameObjectsArray = new GameObject[10];
     }*/
+
+    public void SetWallCount(int value)
+    {
+        wallCount = value;
+    }
+
+    public int GetWallCount()
+    {
+        return wallCount;
+    }
 
     // Публичный метод для установки значения переменной
     public void SetMyVariable(int value)

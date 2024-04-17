@@ -1335,7 +1335,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 1.5
-  far clip plane: 6
+  far clip plane: 8.24
   field of view: 26.991467
   orthographic: 1
   orthographic size: 2.5731664
@@ -1727,7 +1727,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rooms:
-  - {fileID: 6202944437769682108, guid: 1437a23df1a227b45a9603917a6eccac, type: 3}
   - {fileID: 6202944437769682108, guid: 8e1008e40aea89d4bb0a7b61058902b5, type: 3}
 --- !u!4 &770420242
 Transform:
@@ -3520,6 +3519,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 182094990}
     m_Modifications:
+    - target: {fileID: 1472500561525067376, guid: 636792fdeebbbb84d83f26dc917218ec, type: 3}
+      propertyPath: newObjectPrefab
+      value: 
+      objectReference: {fileID: 3072396722424011334, guid: bdefd42a32df55042b1b413ab4292b13, type: 3}
     - target: {fileID: 1483757293447883716, guid: 636792fdeebbbb84d83f26dc917218ec, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[7].m_Data
       value: 
