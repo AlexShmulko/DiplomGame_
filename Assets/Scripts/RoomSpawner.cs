@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 public class RoomSpawner : MonoBehaviour
-{
+{/*
     public Direction direction;
 
     public enum Direction
@@ -33,8 +33,6 @@ public class RoomSpawner : MonoBehaviour
 
     private int maxRoomsToSpawn = 9;
 
-    private RoomVariants variants;
-    private RoomVariantsBig variantsBig;
     private GameObject roomParent;
 
     private GameObject nowRoom;
@@ -323,7 +321,7 @@ private void RecordRoomPointCoordinates()
 
         foreach (RoomSpawner spawner in roomSpawners)
         {
-            if (spawner.CompareTag("RoomPoint") /*|| spawner.CompareTag("RoomPoint_40x20")*/ && spawner.direction == GetOppositeDirection(direction))
+            if (spawner.CompareTag("RoomPoint") /*|| spawner.CompareTag("RoomPoint_40x20") && spawner.direction == GetOppositeDirection(direction))
             {
                 spawner.gameObject.SetActive(false);
             }
@@ -353,5 +351,5 @@ private void RecordRoomPointCoordinates()
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 }

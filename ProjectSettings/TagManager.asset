@@ -17,6 +17,9 @@ TagManager:
   - Room_20x10
   - Room_40x10
   - Room_20x20
+  - Room_40x20_Hor
+  - Room_40x20_Ver
+  - Room_20x20_Ver
   layers:
   - Default
   - TransparentFX

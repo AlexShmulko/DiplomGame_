@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class wallController : MonoBehaviour
+public class SpawnController : MonoBehaviour
 {
     DataManager dataManager;
 
@@ -51,8 +51,6 @@ public class wallController : MonoBehaviour
     public Direction direction;
 
     public BottomDirection bottomDirection;
-
-    //public GameObject PresentRoom;
     
     private Transform PresentRoom;
 
@@ -238,14 +236,31 @@ public class wallController : MonoBehaviour
 
         proshRoomCopy = variants.Rooms[rand];
 
-        /*if (direction == Direction.SmallLeft || direction == Direction.SmallRight)
+        if (direction == Direction.SmallLeft || direction == Direction.SmallRight)
         {
-            while(proshRoomCopy.tag == "Room_20x20")
+            while(proshRoomCopy.tag == "Room_40x20_Ver")
             {
                 rand = Random.Range(0, variants.Rooms.Length);
                 proshRoomCopy = variants.Rooms[rand];
             }
-        }*/
+        }
+        else if (direction == Direction.SmallTop || direction == Direction.SmallBottom)
+        {
+            while(proshRoomCopy.tag == "Room_40x20_Hor")
+            {
+                rand = Random.Range(0, variants.Rooms.Length);
+                proshRoomCopy = variants.Rooms[rand];
+            }
+        }
+        
+        if (direction == Direction.SmallLeft || direction == Direction.SmallRight)
+        {
+            while(proshRoomCopy.tag == "Room_20x20_Ver")
+            {
+                rand = Random.Range(0, variants.Rooms.Length);
+                proshRoomCopy = variants.Rooms[rand];
+            }
+        }
 
         if (direction == Direction.SmallTop)
         {   
@@ -253,15 +268,23 @@ public class wallController : MonoBehaviour
             {
                 if (proshRoomCopy.tag == "Room_20x20")
                 {
-                    spawnPosition = PresentRoom.position + new Vector3(40f, 20f, 0);
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 20f, 0);
                 }
                 else if (proshRoomCopy.tag == "Room_20x10")
                 {
-                    spawnPosition = PresentRoom.position + new Vector3(40f, 3f, 0);
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 3f, 0);
                 }
                 else if (proshRoomCopy.tag == "Room_40x10")
                 {
-                    spawnPosition = PresentRoom.position + new Vector3(40f, 3f, 0);
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 3f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 15f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 20f, 0);
                 }
             }
             else if (sp.tag == "Room_40x10")
@@ -280,6 +303,14 @@ public class wallController : MonoBehaviour
                     {
                         spawnPosition = PresentRoom.position + new Vector3(10f, 27f, 0);
                     }
+                    else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(10f, 22f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(10f, 27f, 0);
+                    }
                 }
                 else if (bottomDirection == BottomDirection.BottomLeft)
                 {
@@ -295,6 +326,14 @@ public class wallController : MonoBehaviour
                     {
                         spawnPosition = PresentRoom.position + new Vector3(0f, 27f, 0);
                     }
+                    else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(0f, 22f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(0f, 27f, 0);
+                    }
                 }
                 else if (bottomDirection == BottomDirection.BottomRight)
                 {
@@ -307,6 +346,14 @@ public class wallController : MonoBehaviour
                         spawnPosition = PresentRoom.position + new Vector3(0f, 10f, 0);
                     }
                     else if (proshRoomCopy.tag == "Room_20x20")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(20f, 27f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position + new Vector3(20f, 22f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20_Ver")
                     {
                         spawnPosition = PresentRoom.position + new Vector3(20f, 27f, 0);
                     }
@@ -326,24 +373,109 @@ public class wallController : MonoBehaviour
                 {
                     spawnPosition = PresentRoom.position + new Vector3(0f, 27f, 0);
                 }
+                else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 22f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 27f, 0);
+                }
+            }
+            else if (sp.tag == "Room_40x20_Ver")
+            {
+                if (proshRoomCopy.tag == "Room_40x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 39f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0, 27f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0, 27f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 44f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 44f, 0);
+                }
+            }
+            else if (sp.tag == "Room_20x20_Ver")
+            {
+                if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 20f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 3f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 3f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 15f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(0f, 20f, 0);
+                }
             }
         }
-
+        
         else if (direction == Direction.SmallBottom)
         {   
             if (sp.tag == "Room_20x20")
             {   
                 if (proshRoomCopy.tag == "Room_20x20")
                 {
-                    spawnPosition = PresentRoom.position - new Vector3(-40f, 20f, 0);
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 20f, 0);
                 }
                 else if (proshRoomCopy.tag == "Room_20x10")
                 {
-                    spawnPosition = PresentRoom.position - new Vector3(-40f, 27f, 0);
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 27f, 0);
                 } 
                 else if (proshRoomCopy.tag == "Room_40x10")
                 {
-                    spawnPosition = PresentRoom.position - new Vector3(-40f, 27f, 0);
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 27f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 44f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 20f, 0);
+                }
+            }
+            else if (sp.tag == "Room_20x20_Ver")
+            {   
+                if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 20f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 20f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 27f, 0);
+                } 
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 27f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 44f, 0);
                 }
             }
             else if (sp.tag == "Room_20x10")
@@ -357,6 +489,14 @@ public class wallController : MonoBehaviour
                     spawnPosition = PresentRoom.position - new Vector3(0f, 10f, 0);
                 }
                 else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 3f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 27f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20_Ver")
                 {
                     spawnPosition = PresentRoom.position - new Vector3(0f, 3f, 0);
                 }
@@ -377,6 +517,14 @@ public class wallController : MonoBehaviour
                     {
                         spawnPosition = PresentRoom.position - new Vector3(-10f, 3f, 0);
                     }
+                    else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(-10f, 27f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(-10f, 3f, 0);
+                    }
                 }
                 else if (bottomDirection == BottomDirection.BottomLeft)
                 {
@@ -389,6 +537,14 @@ public class wallController : MonoBehaviour
                         spawnPosition = PresentRoom.position - new Vector3(0f, 10f, 0);
                     }
                     else if (proshRoomCopy.tag == "Room_20x20")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(0f, 3f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(0f, 27f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20_Ver")
                     {
                         spawnPosition = PresentRoom.position - new Vector3(0f, 3f, 0);
                     }
@@ -407,6 +563,37 @@ public class wallController : MonoBehaviour
                     {
                         spawnPosition = PresentRoom.position - new Vector3(-20f, 3f, 0);
                     }
+                    else if (proshRoomCopy.tag == "Room_40x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(-20f, 27f, 0);
+                    }
+                    else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                    {
+                        spawnPosition = PresentRoom.position - new Vector3(-20f, 3f, 0);
+                    }
+                }
+            }
+            else if (sp.tag == "Room_40x20_Ver")
+            {
+                if (proshRoomCopy.tag == "Room_40x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 39f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0, 22f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 22f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 15f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20_Ver")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(0f, 15f, 0);
                 }
             }
         } 
@@ -427,6 +614,10 @@ public class wallController : MonoBehaviour
                 {
                     spawnPosition = PresentRoom.position - new Vector3(20f, -17f, 0);
                 }
+                else if (proshRoomCopy.tag == "Room_40x20_Hor")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(30f, -5f, 0);
+                }
             }
             else if (sp.tag == "Room_20x10")
             {
@@ -442,22 +633,49 @@ public class wallController : MonoBehaviour
                 {
                     spawnPosition = PresentRoom.position - new Vector3(20f, -17f, 0);
                 }
+                else if (proshRoomCopy.tag == "Room_40x20_Hor")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(30f, -5f, 0);
+                }
             }
             else if (sp.tag == "Room_20x20")
             {
                 if (proshRoomCopy.tag == "Room_40x10")
                 {
-                    spawnPosition = PresentRoom.position - new Vector3(0f, 17f, 0);
+                    spawnPosition = PresentRoom.position - new Vector3(40f, 17f, 0);
                 }
                 else if (proshRoomCopy.tag == "Room_20x10")
                 {
-                    spawnPosition = PresentRoom.position - new Vector3(-20f, 17f, 0);
+                    spawnPosition = PresentRoom.position - new Vector3(20f, 17f, 0);
                 }
                 else if (proshRoomCopy.tag == "Room_20x20")
                 {
-                    spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+                    spawnPosition = PresentRoom.position - new Vector3(20f, 0, 0); 
                 }
-            } 
+                else if (proshRoomCopy.tag == "Room_40x20_Hor")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(30f, 12f, 0);
+                }
+            }
+            else if (sp.tag == "Room_40x20_Hor")
+            {
+                if (proshRoomCopy.tag == "Room_40x20_Hor")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(40f, 0f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(30f, 5f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(50f, 5f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position - new Vector3(30f, -12f, 0);
+                }
+            }  
         }
         
         else if (direction == Direction.SmallRight)
@@ -476,6 +694,10 @@ public class wallController : MonoBehaviour
                 {
                     spawnPosition = PresentRoom.position + new Vector3(20f, 17f, 0);
                 }
+                else if (proshRoomCopy.tag == "Room_40x20_Hor")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(30f, 5f, 0);
+                }
             }
             else if (sp.tag == "Room_40x10")
             {
@@ -490,6 +712,10 @@ public class wallController : MonoBehaviour
                 else if (proshRoomCopy.tag == "Room_20x20")
                 {
                     spawnPosition = PresentRoom.position + new Vector3(40f, 17, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x20_Hor")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(50f, 5f, 0);
                 }
             }
             else if (sp.tag == "Room_20x10")
@@ -506,20 +732,47 @@ public class wallController : MonoBehaviour
                 {
                     spawnPosition = PresentRoom.position + new Vector3(20f, 17, 0);
                 }
+                else if (proshRoomCopy.tag == "Room_40x20_Hor")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(30f, 5f, 0);
+                }
             }
             else if (sp.tag == "Room_20x20")
             {
                 if (proshRoomCopy.tag == "Room_40x10")
                 {
-                    spawnPosition = PresentRoom.position + new Vector3(60f, -17f, 0);
+                    spawnPosition = PresentRoom.position + new Vector3(20f, -17f, 0);
                 }
                 else if (proshRoomCopy.tag == "Room_20x10")
                 {
-                    spawnPosition = PresentRoom.position + new Vector3(60f, -17f, 0);
+                    spawnPosition = PresentRoom.position + new Vector3(20f, -17f, 0);
                 }
                 else if (proshRoomCopy.tag == "Room_20x20")
                 {
-                    spawnPosition = PresentRoom.position + new Vector3(60f, 0, 0);
+                    spawnPosition = PresentRoom.position + new Vector3(20f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_40x20_Hor")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(30f, -12f, 0);
+                }
+            }
+            else if (sp.tag == "Room_40x20_Hor")
+            {
+                if (proshRoomCopy.tag == "Room_40x20_Hor")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(40f, 0, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(30f, -5f, 0);
+                }
+                if (proshRoomCopy.tag == "Room_40x10")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(30f, -5f, 0);
+                }
+                else if (proshRoomCopy.tag == "Room_20x20")
+                {
+                    spawnPosition = PresentRoom.position + new Vector3(30f, 12f, 0);
                 }
             } 
         }
