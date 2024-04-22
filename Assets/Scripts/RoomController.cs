@@ -6,9 +6,13 @@ public class RoomController : MonoBehaviour
 {
     private SpawnController spawnController;
 
+    private MiniBossSpawnController minibossRoomController;
+
     private Transform[] childObjects;
 
     public GameObject newObjectPrefab;
+
+    public GameObject newObjectBossPrefab;
 
     private int randomNumber;
 
@@ -17,6 +21,14 @@ public class RoomController : MonoBehaviour
     DataManager dataManager;
 
     private int wallCount;
+
+    private bool miniboss;
+
+    private int minibossRand;
+
+    private int wallCountFmB;
+    
+    private int randomIndexGug;
 
     void Start()
     {
@@ -27,40 +39,96 @@ public class RoomController : MonoBehaviour
 
     IEnumerator StartAfterDelay(float delay)
     {
-        // Ждем указанное количество секунд
         yield return new WaitForSeconds(delay);
 
-        // Получаем компонент SpawnController из дочерних объектов
         childObjects = GetComponentsInChildren<Transform>();
 
-        List<Transform> availableWalls = new List<Transform>();
+        List<Transform> availableMiniBoss = new List<Transform>();
 
-        //wallCount = dataManager.GetWallCount();
+        wallCount = dataManager.GetWallCount();
 
-        //Debug.Log(wallCount);
+        wallCountFmB = dataManager.GetWallCount();
 
-        foreach (Transform child in childObjects)
+        miniboss = dataManager.GetIsMiniBossRoomSpawned();
+
+        if (miniboss == false)
         {
-            if (child.CompareTag("Wall"))
-            {
-                spawnController = child.GetComponent<SpawnController>();
+            minibossRand = Random.Range(1, 3);
 
-                if (spawnController != null)
+            if ((wallCountFmB > 20 && wallCountFmB < 30) || wallCountFmB > 35/*&& minibossRand == 2*/)
+            {   
+                foreach (Transform child in childObjects)
                 {
-                    wallCount++;
-                    
-                    // Если компонент SpawnController найден, выводим информацию
-                    int leadRoom = spawnController.leadroom;
-                    int backRoom = spawnController.backroom;
+                    if (child != null && child.CompareTag("Wall"))
+                    {
+                        spawnController = child.GetComponent<SpawnController>();
 
-                    Debug.Log("Room Name: " + gameObject.name + ", Wall Object: " + child.name + ", Lead Room: " + leadRoom.ToString() + ", Back Room: " + backRoom.ToString());
+                        if (spawnController != null && spawnController.backroom == 0 && (spawnController.direction == SpawnController.Direction.SmallRight || spawnController.direction == SpawnController.Direction.SmallLeft))
+                        {
+                            availableMiniBoss.Add(child);
+                        }
+                    }
                 }
-                else
-                {
-                    Debug.LogWarning("SpawnController component not found on GameObject with tag 'Wall'.");
-                }
+
+                miniboss = true;
+
+                dataManager.SetIsMiniBossRoomSpawned(miniboss);
+
+                randomIndexGug = Random.Range(0, availableMiniBoss.Count);
+
+                Transform randomWall = availableMiniBoss[randomIndexGug];    
+
+                ReplaceBossDoor(randomWall);
+
+                availableMiniBoss.Clear();
             }
         }
+
+        Invoke("DoorCleaner", 1f);
+
+        Invoke("DoorCounter", 2f);
+    }
+
+    void ReplaceChildren(Transform child)
+    {
+        Transform parent = child.parent;
+
+        Vector3 position = child.position;
+        Quaternion rotation = child.rotation;
+
+        GameObject newObject = Instantiate(newObjectPrefab, position, rotation);
+
+        newObject.transform.parent = parent;
+        
+        Destroy(child.gameObject);
+    }
+
+    void ReplaceBossDoor(Transform child)
+    {
+        Transform parent = child.parent;
+
+        Vector3 position = child.position;
+        Quaternion rotation = child.rotation;
+
+        GameObject newObject = Instantiate(newObjectBossPrefab, position, rotation);
+
+        spawnController = child.GetComponent<SpawnController>();
+
+        minibossRoomController = newObject.GetComponent<MiniBossSpawnController>();
+
+        if (spawnController.direction == SpawnController.Direction.SmallRight)
+        {
+            minibossRoomController.MB_direction = MiniBossSpawnController.MiniBossDirection.Right;
+        }
+
+        newObject.transform.parent = parent;
+        
+        Destroy(child.gameObject);
+    }
+
+    void DoorCleaner()
+    {
+        List<Transform> availableWalls = new List<Transform>();
 
         if (gameObject.tag == "Room_20x10")
         {
@@ -72,7 +140,7 @@ public class RoomController : MonoBehaviour
 
             foreach (Transform child in childObjects)
             {
-                if (child.CompareTag("Wall"))
+                if (child != null  && child.CompareTag("Wall"))
                 {
                     spawnController = child.GetComponent<SpawnController>();
                     if (spawnController != null && spawnController.backroom == 0)
@@ -110,7 +178,7 @@ public class RoomController : MonoBehaviour
 
             foreach (Transform child in childObjects)
             {
-                if (child.CompareTag("Wall"))
+                if (child != null && child.CompareTag("Wall"))
                 {
                     spawnController = child.GetComponent<SpawnController>();
                     if (spawnController != null && spawnController.backroom == 0)
@@ -148,7 +216,7 @@ public class RoomController : MonoBehaviour
 
             foreach (Transform child in childObjects)
             {
-                if (child.CompareTag("Wall"))
+                if (child != null && child.CompareTag("Wall"))
                 {
                     spawnController = child.GetComponent<SpawnController>();
                     if (spawnController != null && spawnController.backroom == 0)
@@ -174,45 +242,28 @@ public class RoomController : MonoBehaviour
                     a++;
                 }
             } 
+        }
+    }
 
+    void DoorCounter()
+    {
+        foreach (Transform child in childObjects)
+        {
+            // Проверяем, не равен ли child null
+            if (child != null && child.CompareTag("Wall"))
+            {
+                spawnController = child.GetComponent<SpawnController>();
+
+                if (spawnController != null)
+                {
+                    wallCount++;
+                    
+                    int leadRoom = spawnController.leadroom;
+                    int backRoom = spawnController.backroom;
+                }
+            }
         }
 
         dataManager.SetWallCount(wallCount);
-        Debug.Log("asd " + wallCount);
     }
-
-    void ReplaceChildren(Transform child)
-    {
-        Transform parent = child.parent;
-
-        Vector3 position = child.position;
-        Quaternion rotation = child.rotation;
-
-        GameObject newObject = Instantiate(newObjectPrefab, position, rotation);
-
-        newObject.transform.parent = parent;
-        
-        Destroy(child.gameObject);
-
-        //CopyComponents(child.gameObject, newObject);
-    }
-
-    /*void CopyComponents(GameObject oldObject, GameObject newObject)
-    {
-        // Получаем все компоненты текущего объекта
-        Component[] components = oldObject.GetComponents<Component>();
-
-        // Копируем компоненты на новый объект
-        foreach (Component comp in components)
-        {
-            // Проверяем, не является ли компонентом трансформация
-            if (!(comp is Transform))
-            {
-                // Копируем компоненты, кроме Transform, на новый объект
-                UnityEditorInternal.ComponentUtility.CopyComponent(comp);
-                UnityEditorInternal.ComponentUtility.PasteComponentAsNew(newObject);
-            }
-        }
-    }*/
-
 }

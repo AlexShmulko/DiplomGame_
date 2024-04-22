@@ -11,6 +11,8 @@ public class DataManager : MonoBehaviour
 
     private int lastRoomId;
 
+    private bool isMiniBossRoomSpawned;
+
     private Dictionary<int, GameObject> gameObjectsDictionary = new Dictionary<int, GameObject>();
 
     private static DataManager instance;
@@ -33,6 +35,16 @@ public class DataManager : MonoBehaviour
         // Пример создания массива из 10 игровых объектов при инициализации DataManager
         gameObjectsArray = new GameObject[10];
     }*/
+
+    public void SetIsMiniBossRoomSpawned (bool value)
+    {
+        isMiniBossRoomSpawned = value;
+    }
+
+    public bool GetIsMiniBossRoomSpawned()
+    {
+        return isMiniBossRoomSpawned;
+    }
 
     public void SetWallCount(int value)
     {

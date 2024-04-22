@@ -3401,6 +3401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newObjectPrefab: {fileID: 3072396722424011334, guid: bdefd42a32df55042b1b413ab4292b13, type: 3}
+  newObjectBossPrefab: {fileID: 5995230779657956564, guid: a06ad8ba694b5c744b4a0b8bf661e413, type: 3}
 --- !u!1 &7280764871580703084
 GameObject:
   m_ObjectHideFlags: 0

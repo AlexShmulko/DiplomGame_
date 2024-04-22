@@ -20,6 +20,10 @@ TagManager:
   - Room_40x20_Hor
   - Room_40x20_Ver
   - Room_20x20_Ver
+  - BossRoom
+  - RoomPoint_40x20
+  - MBVariants
+  - MiniBossWall
   layers:
   - Default
   - TransparentFX
