@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Apply : MonoBehaviour
 {
-
-    private InterfaceController interfaceController;
+    private SaveManager saveManager;
 
     private void Start()
     {
-        interfaceController = GameObject.Find("Interface").GetComponent<InterfaceController>();
+        saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
     }
 
     public void ApplyLevelUp()
     {
-        interfaceController.UpdateCurretAttributes();
-        interfaceController.isLevelUpApply = true;
+        saveManager.SaveData();
     }
 }

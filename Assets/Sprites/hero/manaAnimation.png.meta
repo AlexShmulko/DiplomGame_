@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c4d39af37c8774d4ba0e52eb35e8df97
+guid: b5a47085907a79240a013845910bf63d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: healAnimation_0
+      name: manaAnimation_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c87917a2933ac0c4a91ea1bd6ccc5c79
-      internalID: -135193863
+      spriteID: e92c199528b8ce04999f57f29463d1da
+      internalID: -2144002944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_1
+      name: manaAnimation_1
       rect:
         serializedVersion: 2
         x: 80
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b9d449bc1a41084a948cf19890203ec
-      internalID: 1810603576
+      spriteID: 3889adc43af037943adc3d4b3afa4107
+      internalID: 1203907336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_2
+      name: manaAnimation_2
       rect:
         serializedVersion: 2
         x: 160
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c35f69c44580d1b458268816eecf4b04
-      internalID: 1002541239
+      spriteID: 0fad2f559d61c7b479448a967fd51c5c
+      internalID: -504637395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_3
+      name: manaAnimation_3
       rect:
         serializedVersion: 2
         x: 240
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 504c38cd92e30b248be1ced2a40a0a9e
-      internalID: 800754682
+      spriteID: 9b675d1e5ea8d034f959e2583a1ab907
+      internalID: 1141351472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_4
+      name: manaAnimation_4
       rect:
         serializedVersion: 2
         x: 320
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 778612ab0e554f94b994f98b4b809043
-      internalID: 1715957328
+      spriteID: bae0c125552086541a90be6f9bb1532c
+      internalID: 1935912270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_5
+      name: manaAnimation_5
       rect:
         serializedVersion: 2
         x: 400
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae2253383af33cc438454d0be2dcd36c
-      internalID: 1560014552
+      spriteID: 7678915967423e443b33cb3b98ce4605
+      internalID: 1701549851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_6
+      name: manaAnimation_6
       rect:
         serializedVersion: 2
         x: 480
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d4477d427c491443ad782ca1f0337cc
-      internalID: -782750494
+      spriteID: 54f5c5424dc42a34f8f673656a8e5e48
+      internalID: -1972273184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_7
+      name: manaAnimation_7
       rect:
         serializedVersion: 2
         x: 560
@@ -284,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ed5430f499758e4f94ce6866418ffc1
-      internalID: 113736428
+      spriteID: 66c42229bd0af34429f17eb7f4a622fd
+      internalID: -754816568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_8
+      name: manaAnimation_8
       rect:
         serializedVersion: 2
         x: 640
@@ -305,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 306ba771a311d7241bb06c95857c61ca
-      internalID: -196860816
+      spriteID: 8458f82a34c0c834da472000e52a6561
+      internalID: -1883510140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_9
+      name: manaAnimation_9
       rect:
         serializedVersion: 2
         x: 720
@@ -326,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea4b96cc159b119478fb93c47c8ec879
-      internalID: -504083477
+      spriteID: 8c5c11e90b2948c4b98c5ed3d5b2603c
+      internalID: 1166983450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_10
+      name: manaAnimation_10
       rect:
         serializedVersion: 2
         x: 800
@@ -347,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67227f8444b075045b8896ad1136bc86
-      internalID: -1360757622
+      spriteID: c96eae49058c9eb4fa2592e22ef85d9b
+      internalID: -1177784923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_11
+      name: manaAnimation_11
       rect:
         serializedVersion: 2
         x: 880
@@ -368,14 +368,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a108807aa8b757c4dae84a878ae2f41b
-      internalID: -784876423
+      spriteID: a2b7032459ab11a439309ebf6cb69d53
+      internalID: -1268001346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_12
+      name: manaAnimation_12
       rect:
         serializedVersion: 2
         x: 960
@@ -389,14 +389,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 181111e17fc68454ea9807be553bf963
-      internalID: 1412012857
+      spriteID: 2a9a485f8a2e7b8449e16d4063614873
+      internalID: -55769648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_13
+      name: manaAnimation_13
       rect:
         serializedVersion: 2
         x: 1040
@@ -410,14 +410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94d98491cd28d5a429a7c9c2ae60f4c1
-      internalID: -617151119
+      spriteID: db115c2d0fd94954a8c97e722b11f775
+      internalID: -1564628895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_14
+      name: manaAnimation_14
       rect:
         serializedVersion: 2
         x: 1120
@@ -431,14 +431,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dd62d34c149b8a48836ca84e72e2f87
-      internalID: -1391071483
+      spriteID: 9bc7e6782eb421d47867a43bc8272190
+      internalID: -1311168224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_15
+      name: manaAnimation_15
       rect:
         serializedVersion: 2
         x: 1200
@@ -452,14 +452,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9961fe7de0b33e64b8691505c8306c93
-      internalID: -1784284552
+      spriteID: dfecf00f44041c34c80f16beced477bd
+      internalID: 223683229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_16
+      name: manaAnimation_16
       rect:
         serializedVersion: 2
         x: 1280
@@ -473,14 +473,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dd59144f20ba3c4088942bf21329654
-      internalID: -261655457
+      spriteID: c6fbfc65749250e498f8f99d474d627e
+      internalID: 1058030090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: healAnimation_17
+      name: manaAnimation_17
       rect:
         serializedVersion: 2
         x: 1360
@@ -494,8 +494,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8159d4d3c847a8945add2f7bf03eda14
-      internalID: -264804606
+      spriteID: d7c5ce27fb903cb43a63adf3483878ce
+      internalID: 1788153133
       vertices: []
       indices: 
       edges: []
@@ -511,24 +511,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      healAnimation_0: -135193863
-      healAnimation_1: 1810603576
-      healAnimation_10: -1360757622
-      healAnimation_11: -784876423
-      healAnimation_12: 1412012857
-      healAnimation_13: -617151119
-      healAnimation_14: -1391071483
-      healAnimation_15: -1784284552
-      healAnimation_16: -261655457
-      healAnimation_17: -264804606
-      healAnimation_2: 1002541239
-      healAnimation_3: 800754682
-      healAnimation_4: 1715957328
-      healAnimation_5: 1560014552
-      healAnimation_6: -782750494
-      healAnimation_7: 113736428
-      healAnimation_8: -196860816
-      healAnimation_9: -504083477
+      manaAnimation_0: -2144002944
+      manaAnimation_1: 1203907336
+      manaAnimation_10: -1177784923
+      manaAnimation_11: -1268001346
+      manaAnimation_12: -55769648
+      manaAnimation_13: -1564628895
+      manaAnimation_14: -1311168224
+      manaAnimation_15: 223683229
+      manaAnimation_16: 1058030090
+      manaAnimation_17: 1788153133
+      manaAnimation_2: -504637395
+      manaAnimation_3: 1141351472
+      manaAnimation_4: 1935912270
+      manaAnimation_5: 1701549851
+      manaAnimation_6: -1972273184
+      manaAnimation_7: -754816568
+      manaAnimation_8: -1883510140
+      manaAnimation_9: 1166983450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

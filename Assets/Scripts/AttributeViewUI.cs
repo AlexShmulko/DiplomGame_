@@ -7,10 +7,13 @@ public class AttributeViewUI : MonoBehaviour
 {
     public string attribute;
     private TextMeshProUGUI textMesh;
+    private SaveManager saveManager;
+    private int currentAttriibuteValue;
 
     private void Start()
     {
         textMesh = GetComponent<TextMeshProUGUI>();
+        saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
         UpdateAttributeView();
     }
 
@@ -21,6 +24,19 @@ public class AttributeViewUI : MonoBehaviour
 
     public void UpdateAttributeView()
     {
-        textMesh.text = PlayerPrefs.GetInt(attribute).ToString();
+
+        switch (attribute)
+        {
+            case "HeroAgility":
+                currentAttriibuteValue = saveManager.heroAgility;
+                break;
+            case "HeroStrength":
+                currentAttriibuteValue = saveManager.heroStrength;
+                break;
+            case "HeroIntelligence":
+                currentAttriibuteValue = saveManager.heroIntelligence;
+                break;
+        }
+        textMesh.text = currentAttriibuteValue.ToString();
     }
 }

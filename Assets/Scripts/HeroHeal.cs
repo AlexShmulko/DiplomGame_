@@ -4,41 +4,38 @@ using UnityEngine;
 
 public class HeroHeal : MonoBehaviour
 {
-    private HeroStats heroStats;
-    private Animator heroAnimator;
     private SaveManager saveManager;
-
-    public bool isHealing = false;
+    private HeroStates heroStates;
+    private Animator heroAnimator;
 
     private void Start()
     {
-        heroStats = GetComponent<HeroStats>();
-        heroAnimator = GetComponent<Animator>();
         saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
+        heroStates = GetComponent<HeroStates>();
+        heroAnimator = GetComponent<Animator>();
     }
 
-    public void GetHealing()
+    public void GetHealed()
     {
-        if (!isHealing && heroStats.healPotion != 0 && heroStats.heroHP != saveManager.HeroHP)
+        if (saveManager.healPotions != 0 && saveManager.currentHeroHP != saveManager.heroHP)
         {
-            isHealing = true;
-            if (heroStats.heroHP + heroStats.healingSize < saveManager.HeroHP)
+            heroStates.isHealing = true;
+            if (saveManager.currentHeroHP + saveManager.healSize < saveManager.heroHP)
             {
-                heroStats.heroHP += heroStats.healingSize;
+                saveManager.currentHeroHP += saveManager.healSize;
             }
             else
             {
-                heroStats.heroHP = saveManager.HeroHP;
+                saveManager.currentHeroHP = saveManager.heroHP;
             }
-            heroStats.healPotion--;
+            saveManager.healPotions--;
             heroAnimator.Play("healing");
-            Input.ResetInputAxes();
-            saveManager.UpdateData("CurrentHeroHP", heroStats.heroHP);
+            saveManager.SaveData();
         }
     }
 
     private void StopHealing() // вызывается в конце анимации исцеления (healing)
     {
-        isHealing = false;
+        heroStates.isHealing = false;
     }
 }

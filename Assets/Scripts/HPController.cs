@@ -2,24 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HPController : MonoBehaviour
 {
-    [SerializeField] GameObject hero;
-    [SerializeField] HeroStats heroStats;
-    //HeroStats stats;
-    int HeroHP;
-    RectTransform transform;
+    private SaveManager saveManager;
+    private Image hpImage;
+    public string statName;
     void Start()
     {
-        transform = GetComponent<RectTransform>();
-        heroStats = hero.GetComponent<HeroStats>();
-        HeroHP = heroStats.heroHP;
+        saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
+        hpImage = GetComponent<Image>();
     }
 
     void Update()
     {
-        HeroHP = heroStats.heroHP;
-        transform.offsetMax = new Vector2(-(1852 - HeroHP * 5.3f), transform.offsetMax.y);
+        if (statName == "hp")
+        {
+            hpImage.fillAmount = saveManager.currentHeroHP / 100f;
+        }else
+        {
+            hpImage.fillAmount = saveManager.currentHeroMP / 100f;
+        }
     }
 }

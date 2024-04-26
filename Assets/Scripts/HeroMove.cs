@@ -9,109 +9,105 @@ public class HeroMove : MonoBehaviour
     // Константы +
     public float MoveSpeed = 5f;
 
-    private Rigidbody2D rbHero;
-    private SpriteRenderer srHero;
+    private SaveManager saveManager;
+    private HeroStates heroStates;
     private Animator heroAnimator;
-    private BoxCollider2D heroCollider;
+    private Rigidbody2D rbHero;
 
-    private HeroStats heroStats;
 
-    public float deshLenght = 3f;
-    public float jumpLenght = 5f;
-    private float defaultObstacleCheckPosition;
-    private string groundType;
-
-    [SerializeField] private bool onPlatform = false;
-
-    
     //+
-    public float currentMoveSpeed;
-    private float currentDirX = 0f;
-
-
-
-    [SerializeField] private Collider2D playerAttackArea;
-    [SerializeField] private Collider2D obstacleCheck;
-    [SerializeField] private Tilemap platformsTilemap;
-
-
-    bool isFalling = false;
-    bool isDashing = false;
-    bool isRuning = false;  
-    bool isJumping = false;  
+    private float currentMoveSpeed = 0f;
+    private float currentDashSpeed = 0f;
+    private float currentJumpForce = 0f;
 
 
     private void Start()
     {
-        currentMoveSpeed = MoveSpeed;
-
-        rbHero = GetComponent<Rigidbody2D>();
-        srHero = GetComponent<SpriteRenderer>();
+        saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
+        heroStates = GetComponent<HeroStates>();
         heroAnimator = GetComponent<Animator>();
-        heroCollider = GetComponent<BoxCollider2D>();
+        rbHero = GetComponent<Rigidbody2D>();
 
-        heroStats = GetComponent<HeroStats>();
+        currentMoveSpeed = MoveSpeed;
+    }
 
-        defaultObstacleCheckPosition = Math.Abs(gameObject.transform.Find("ObstacleCheck").transform.position.x - gameObject.transform.position.x);
 
-        groundType = gameObject.GetComponentInChildren<GroundCheck>().groundType;
+
+    private void FixedUpdate()
+    {
+        if (heroStates.isDashing)
+        {
+            rbHero.velocity = transform.right * currentDashSpeed;
+        }
+
+        if (heroStates.isJumping)
+        {
+            rbHero.velocity = new Vector2(rbHero.velocity.x, currentJumpForce);
+        }
     }
 
     public void Move(float dirX)
     {
-        if (dirX != 0f) currentDirX = dirX;
         rbHero.velocity = new Vector2(dirX * currentMoveSpeed, rbHero.velocity.y);
-        if (dirX > 0f)
+        if (dirX > 0)
         {
-            isRuning = true;
-            srHero.flipX = false;
-            playerAttackArea.transform.position = new Vector2(rbHero.position.x + 0.7f, playerAttackArea.transform.position.y);
-            playerAttackArea.transform.rotation = Quaternion.Euler(0, 0, 0);
-            obstacleCheck.transform.position = new Vector2(gameObject.transform.position.x + defaultObstacleCheckPosition, obstacleCheck.transform.position.y);
+            heroStates.isRunning = true;
+            transform.eulerAngles = new Vector2(transform.rotation.x, 0);
         }
-        else if (dirX < 0f)
+        else if (dirX < 0)
         {
-            isRuning = true;
-            srHero.flipX = true;
-            playerAttackArea.transform.position = new Vector2(rbHero.position.x - 0.7f, playerAttackArea.transform.position.y);
-            playerAttackArea.transform.rotation = Quaternion.Euler(0, 180, 0);
-            obstacleCheck.transform.position = new Vector2(gameObject.transform.position.x - defaultObstacleCheckPosition, obstacleCheck.transform.position.y);
-        }else isRuning = false;
-        heroAnimator.SetBool("isRuning", isRuning);
+            heroStates.isRunning = true;
+            transform.eulerAngles = new Vector2(transform.rotation.x, 180);
+        }
+        else heroStates.isRunning = false;
+        heroAnimator.SetBool("isRuning", heroStates.isRunning);
     }
 
     public void Dash()
     {
-        isDashing = true;
+        currentDashSpeed = 2f;
+        heroStates.isDashing = true;
         heroAnimator.Play("dash");
-        currentMoveSpeed = 0f;
     }
 
     private void StopDash()
     {
-        isDashing = false;
-        currentMoveSpeed = MoveSpeed;
+        heroStates.isDashing = false;
     }
 
-    private void teleportationInDash()
+    public void UpDashForce()
     {
-        transform.position = new Vector2(transform.position.x + currentDirX * heroStats.dashLength, transform.position.y);
+        currentDashSpeed = saveManager.dashSpeed;
     }
+
+    public void DownDashForce()
+    {
+        currentDashSpeed = 2f;
+    }
+
 
     public void Jump()
     {
-        isJumping = true;
+        currentMoveSpeed = 3f;
+        currentJumpForce = 0f;
+        heroStates.isJumping = true;
         heroAnimator.Play("jump");
     }
 
     private void StopJump()
     {
-        isJumping = false;
+        currentMoveSpeed = MoveSpeed;
+        heroStates.isJumping = false;
     }
 
-    private void teleportationInJump()
+    public void UpJumpForce()
     {
-        transform.position = new Vector2(transform.position.x, transform.position.y + heroStats.jumpHeight);
+        currentJumpForce = saveManager.jumpForce;
+    }
+
+    public void DownJumpForce()
+    {
+        currentJumpForce = 2f;
     }
 
     public void Fall(bool onGround)

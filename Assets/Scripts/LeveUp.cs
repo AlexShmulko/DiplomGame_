@@ -11,6 +11,7 @@ public class LeveUp : MonoBehaviour
     public TextMeshProUGUI attributeView;
 
     private int coefficientOfLevelUpCost = 100;
+    private int currentAttriibuteValue;
 
 
     private void Start()
@@ -21,24 +22,56 @@ public class LeveUp : MonoBehaviour
 
     public void AttributeBoost(string attribute)
     {
-        if(saveManager.Souls - saveManager.LevelUpCost >= 0)
+        if(saveManager.souls - saveManager.levelUpCost >= 0)
         {
-            saveManager.UpdateData(attribute, PlayerPrefs.GetInt(attribute) + 1);
-            saveManager.UpdateData("Souls", saveManager.Souls - saveManager.LevelUpCost);
-            saveManager.UpdateData("LevelUpCost", saveManager.LevelUpCost + coefficientOfLevelUpCost);
-            //attributeView.text = PlayerPrefs.GetInt(attribute).ToString();
-            //saveManager.UpdateAllData();
+            switch (attribute)
+            {
+                case "HeroAgility":
+                    saveManager.heroAgility++;
+                    break;
+                case "HeroStrength":
+                    saveManager.heroStrength++;
+                    break;
+                case "HeroIntelligence":
+                    saveManager.heroIntelligence++;
+                    break;
+            }
+            saveManager.souls -= saveManager.levelUpCost;
+            saveManager.levelUpCost += coefficientOfLevelUpCost;
         }
     }
 
     public void AttributeDowngrade(string attribute)
     {
-        if (PlayerPrefs.GetInt(attribute) - 1 >= 0 && PlayerPrefs.GetInt(attribute) - 1 >= interfaceController.CheñkCurrentAttribute(attribute))
+        switch (attribute)
         {
-            saveManager.UpdateData(attribute, PlayerPrefs.GetInt(attribute) - 1);
-            saveManager.UpdateData("LevelUpCost", saveManager.LevelUpCost - coefficientOfLevelUpCost);
-            saveManager.UpdateData("Souls", saveManager.Souls + saveManager.LevelUpCost);
-            //attributeView.text = PlayerPrefs.GetInt(attribute).ToString();
+            case "HeroAgility":
+                currentAttriibuteValue = saveManager.heroAgility;
+                break;
+            case "HeroStrength":
+                currentAttriibuteValue = saveManager.heroStrength;
+                break;
+            case "HeroIntelligence":
+                currentAttriibuteValue = saveManager.heroIntelligence;
+                break;
+        }
+
+        if (currentAttriibuteValue - 1 >= PlayerPrefs.GetInt(attribute))
+        {
+            switch (attribute)
+            {
+                case "HeroAgility":
+                    saveManager.heroAgility--;
+                    break;
+                case "HeroStrength":
+                    saveManager.heroStrength--;
+                    break;
+                case "HeroIntelligence":
+                    saveManager.heroIntelligence--;
+                    break;
+            }
+            saveManager.levelUpCost -= coefficientOfLevelUpCost;
+            saveManager.souls += saveManager.levelUpCost;
         }
     }
 }

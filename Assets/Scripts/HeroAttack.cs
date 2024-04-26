@@ -5,39 +5,35 @@ using UnityEngine;
 public class HeroAttack : MonoBehaviour
 {
     private Animator heroAnimator;
-    private HeroMove heroMove;
-    [SerializeField] private PolygonCollider2D heroAttackAreaCollider;
+    private HeroStates heroStates;
+    public PolygonCollider2D heroAttackAreaCollider;
 
     private int attackAnimationNumber = 1;
-    public bool isAttacking = false;
 
     private void Start()
     {
+        heroStates = GetComponent<HeroStates>();
         heroAnimator = GetComponent<Animator>();
-        heroMove = GetComponent<HeroMove>();
+
+        heroAttackAreaCollider.enabled = false;
     }
 
     public void Attack()
     {
-        if (!isAttacking)
+        heroStates.isAttacking = true;
+        if (attackAnimationNumber != 2)
         {
-            heroMove.currentMoveSpeed = 0f;
-            isAttacking = true;
-            if (attackAnimationNumber != 2)
-            {
-                attackAnimationNumber++;
-            }
-            else attackAnimationNumber = 1;
-            heroAttackAreaCollider.enabled = true;
-            heroAnimator.Play("attack_" + attackAnimationNumber);
+            attackAnimationNumber++;
         }
+        else attackAnimationNumber = 1;
+        heroAttackAreaCollider.enabled = true;
+        heroAnimator.Play("attack_" + attackAnimationNumber);
     }
 
-    private void StopAttacking() // вызывается в конце анимации атаки (attack_1 и attack_2)
+    private void StopAttack() // вызывается в конце анимации атаки (attack_1 и attack_2)
     {
-        isAttacking = false;
+        heroStates.isAttacking = false;
         heroAttackAreaCollider.enabled = false;
-        heroMove.currentMoveSpeed = heroMove.MoveSpeed;
     }
 
 

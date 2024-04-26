@@ -6,60 +6,89 @@ public class HeroController : MonoBehaviour
 {
 
     private HeroHeal heroHeal;
+    private HeroMana heroMana;
     private HeroAttack heroAttack;
     private HeroMove heroMove;
-    private GroundCheck groindCheck;
+    private GroundCheck groundCheck;
+    private SaveManager saveManager;
+    private HeroStates heroStates;
+    private Magic magic;
+
+    private InterfaceController interfaceController;
 
     void Start()
     {
         heroHeal = GetComponent<HeroHeal>();
+        heroMana = GetComponent<HeroMana>();
         heroAttack = GetComponent<HeroAttack>();
         heroMove = GetComponent<HeroMove>();
-        groindCheck = GameObject.Find("GroundCheck").GetComponent<GroundCheck>();
+        heroStates = GetComponent<HeroStates>();
+        magic = GetComponent<Magic>();
+        saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
+        groundCheck = GameObject.Find("GroundCheck").GetComponent<GroundCheck>();
+        interfaceController = GameObject.Find("Interface").GetComponent<InterfaceController>();
     }
 
     void Update()
     {
-        heroMove.Fall(groindCheck.onGround);
+        heroMove.Fall(groundCheck.onGround);
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (heroStates.HeroEmploymentCheck())
         {
-            Debug.Log("I press heal!");
-            heroHeal.GetHealing();
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (interfaceController.inventoryItemNumber == 0)
+                {
+                    heroHeal.GetHealed();
+                }
+                if (interfaceController.inventoryItemNumber == 1)
+                {
+                    heroMana.GetMana();
+                }
+            }
+
+
+            if (Input.GetButtonDown("Fire2") && saveManager.currentHeroMP >= 20)
+            {
+                magic.StartCast();
+            }
+
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Debug.Log("I press attack!");
+                heroAttack.Attack();
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                Debug.Log("I press dash!");
+                heroMove.Dash();
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Space) && groundCheck.onGround)
+            {
+                Debug.Log("I press jump!");
+                heroMove.Jump();
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                Debug.Log("I press s!");
+                heroMove.FallFromPlatform(groundCheck.groundType, groundCheck.ground);
+            }
+
+
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !heroStates.isDashing && !heroStates.isHealing && !magic.isCasting && !heroStates.isAttacking)
+            {
+                heroMove.Move(Input.GetAxisRaw("Horizontal"));
+            }
+            else if (!heroStates.isDashing)
+            {
+                heroMove.Move(0f);
+            }
         }
-
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Debug.Log("I press attack!");
-            heroAttack.Attack();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            Debug.Log("I press dash!");
-            heroMove.Dash();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("I press jump!");
-            heroMove.Jump();
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Debug.Log("I press s!");
-            heroMove.FallFromPlatform(groindCheck.groundType, groindCheck.ground);
-        }
-
-
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {
-            heroMove.Move(Input.GetAxisRaw("Horizontal"));
-        }
-        else heroMove.Move(0f);
     }
 }

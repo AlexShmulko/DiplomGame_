@@ -13,15 +13,15 @@ public class Attack : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Enemy enemy = collision.GetComponent<Enemy>();
         if (collision.gameObject.CompareTag("barrel"))
         {
             anim = collision.gameObject.GetComponent<Animator>();
             anim.Play("barrelDestruction");
         }
-        if (collision.gameObject.CompareTag("Robber"))
+        if (enemy != null)
         {
-            robber = collision.gameObject.GetComponent<Robber>();
-            robber.TakeDamage();
+            enemy.TakeDamage();
         }
     }
 }

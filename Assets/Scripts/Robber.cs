@@ -6,17 +6,17 @@ public class Robber : MonoBehaviour
 {
     public int robberHP = 100;
     public int souls = 3;
-    private HeroStats heroStats;
+    //private HeroStats heroStats;
     public GameObject soul;
 
     private void Start()
     {
-        heroStats = GameObject.Find("Hero").GetComponent<HeroStats>();
+        //heroStats = GameObject.Find("Hero").GetComponent<HeroStats>();
     }
 
     public void TakeDamage()
     {
-        robberHP = robberHP - heroStats.damage;
+        //robberHP = robberHP - heroStats.damage;
         if (robberHP < 0) 
         {
             Destroy(gameObject);

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b38da165ddb4a54195db727227e55a5
+guid: 39fd6e6feb7e0ed48b688db5f0d78444
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,148 +123,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dashEffV_0
+      name: magicImpact_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 160
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.09}
+      pivot: {x: 0.63, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3755df87a8aaecb489ccd164420022f2
-      internalID: 1727835657
+      spriteID: b41bbaeed1ca37246bd01f6fe211a2bb
+      internalID: -1465732158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dashEffV_1
+      name: magicImpact_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 64
         y: 0
-        width: 80
-        height: 160
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.15}
+      pivot: {x: 0.63, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee6b454a5386d9549b65e53e488b8ebf
-      internalID: -1073062814
+      spriteID: 73b5fdaeb50c96d49ae6c43983ce2e00
+      internalID: 912066973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dashEffV_2
+      name: magicImpact_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 128
         y: 0
-        width: 80
-        height: 160
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.24}
+      pivot: {x: 0.63, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa2bfec04d82a454ba35ff52af16180b
-      internalID: 1268599339
+      spriteID: 15909e9257bc65c4d95b55e9f9a12de3
+      internalID: 1348776526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dashEffV_3
+      name: magicImpact_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 192
         y: 0
-        width: 80
-        height: 160
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.39}
+      pivot: {x: 0.63, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cf4ef73f4337ae478b577011c29cc6d
-      internalID: 150469816
+      spriteID: 33b048c206df14541af26eecc70f23b2
+      internalID: 878027102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dashEffV_4
+      name: magicImpact_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.63, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 741354a8504e081489d2fe81c44e277d
+      internalID: -308756790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicImpact_5
       rect:
         serializedVersion: 2
         x: 320
         y: 0
-        width: 80
-        height: 160
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.49}
+      pivot: {x: 0.63, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5db4d196e22754d48ab476c0876e6512
-      internalID: -1355857049
+      spriteID: 89d35890629da244dba49579be59a87b
+      internalID: 273981460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dashEffV_5
+      name: magicImpact_6
       rect:
         serializedVersion: 2
-        x: 400
+        x: 384
         y: 0
-        width: 80
-        height: 160
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.82}
+      pivot: {x: 0.63, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 727c4e8ec14fe7b43924db666da64b57
-      internalID: 1342699742
+      spriteID: e3e07daad0c5a5c488ea820460333082
+      internalID: 1375399293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dashEffV_6
+      name: magicImpact_7
       rect:
         serializedVersion: 2
-        x: 480
+        x: 448
         y: 0
-        width: 80
-        height: 160
+        width: 64
+        height: 64
       alignment: 9
-      pivot: {x: 0.5, y: 0.88}
+      pivot: {x: 0.63, y: 0.37}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 164c9a40f9d9cef40a5c22c4f5e4a860
-      internalID: -1844057155
+      spriteID: b3fcca90259a0c9449669a92b0fb947f
+      internalID: 1771630898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicImpact_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.63, y: 0.37}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 674b64109d1d00a4d8a2fffbddeaad7d
+      internalID: -216382301
       vertices: []
       indices: 
       edges: []
@@ -280,13 +322,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dashEffV_0: 1727835657
-      dashEffV_1: -1073062814
-      dashEffV_2: 1268599339
-      dashEffV_3: 150469816
-      dashEffV_4: -1355857049
-      dashEffV_5: 1342699742
-      dashEffV_6: -1844057155
+      magicImpact_0: -1465732158
+      magicImpact_1: 912066973
+      magicImpact_2: 1348776526
+      magicImpact_3: 878027102
+      magicImpact_4: -308756790
+      magicImpact_5: 273981460
+      magicImpact_6: 1375399293
+      magicImpact_7: 1771630898
+      magicImpact_8: -216382301
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
