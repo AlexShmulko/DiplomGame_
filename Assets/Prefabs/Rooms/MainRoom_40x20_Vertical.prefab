@@ -2701,7 +2701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3188067291444998721}
   - component: {fileID: -9115294436017216917}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MainRoom_40x20_Vertical
   m_TagString: Room_40x20_Ver
   m_Icon: {fileID: 0}

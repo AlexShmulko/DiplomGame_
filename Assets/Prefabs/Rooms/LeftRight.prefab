@@ -1190,7 +1190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3188067291444998721}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftRight
   m_TagString: NowRoom
   m_Icon: {fileID: 0}

@@ -21,23 +21,25 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1676167014, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+      value: {fileID: -1676167014, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
     - time: 0.04347826
-      value: {fileID: -1032393343, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+      value: {fileID: -1032393343, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
     - time: 0.08695652
-      value: {fileID: -927992639, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+      value: {fileID: -927992639, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
     - time: 0.13043478
-      value: {fileID: -496019316, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+      value: {fileID: -496019316, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
     - time: 0.17391305
-      value: {fileID: 554599711, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+      value: {fileID: 554599711, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
     - time: 0.2173913
-      value: {fileID: -1798287140, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+      value: {fileID: -1798287140, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
     - time: 0.26086956
-      value: {fileID: -636140340, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+      value: {fileID: -636140340, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
     - time: 0.3043478
-      value: {fileID: -1531401107, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+      value: {fileID: -1531401107, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
     - time: 0.3478261
-      value: {fileID: 46111827, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+      value: {fileID: 46111827, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - time: 0.4347826
+      value: {fileID: 46111827, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -60,21 +62,22 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1676167014, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
-    - {fileID: -1032393343, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
-    - {fileID: -927992639, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
-    - {fileID: -496019316, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
-    - {fileID: 554599711, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
-    - {fileID: -1798287140, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
-    - {fileID: -636140340, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
-    - {fileID: -1531401107, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
-    - {fileID: 46111827, guid: f1228a17dd0059b48923c073baf4afe9, type: 3}
+    - {fileID: -1676167014, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - {fileID: -1032393343, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - {fileID: -927992639, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - {fileID: -496019316, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - {fileID: 554599711, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - {fileID: -1798287140, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - {fileID: -636140340, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - {fileID: -1531401107, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - {fileID: 46111827, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
+    - {fileID: 46111827, guid: 7114d0c3738827f4097c2bc2e99c33c4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.39130434
+    m_StopTime: 0.47826084
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -93,4 +96,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.4347826
+    functionName: StopAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

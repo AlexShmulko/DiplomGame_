@@ -1641,7 +1641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3188067291444998721}
   - component: {fileID: -2981152416327573721}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MiniBossRoom
   m_TagString: BossRoom
   m_Icon: {fileID: 0}

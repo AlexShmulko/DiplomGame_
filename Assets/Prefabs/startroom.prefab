@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7228874792349980110}
   - component: {fileID: 4652585471524518991}
   - component: {fileID: 1472500561525067376}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: startroom
   m_TagString: StartRoom
   m_Icon: {fileID: 0}
@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newObjectPrefab: {fileID: 0}
+  newObjectBossPrefab: {fileID: 0}
 --- !u!1 &5260241656712604711
 GameObject:
   m_ObjectHideFlags: 0

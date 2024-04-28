@@ -3363,7 +3363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3188067291444998721}
   - component: {fileID: -6827169101367645342}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MainRoom_40x20_Horizontal 2
   m_TagString: Room_40x20_Hor
   m_Icon: {fileID: 0}

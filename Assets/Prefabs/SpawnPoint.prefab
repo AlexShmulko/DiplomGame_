@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 937150566805328939}
   - component: {fileID: 7139565983829683590}
   - component: {fileID: 7647464259309749667}
-  - component: {fileID: -2552528859694573328}
+  - component: {fileID: 2645248592827768229}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: RoomPoint
@@ -106,7 +106,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-2552528859694573328
+--- !u!114 &2645248592827768229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,9 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3451762024928158147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe322ed25ab525248aed994d40a29caa, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b38ccd3e9d249f4ba6ffe1640778400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 0
-  raycastDistanceX: 40
-  raycastDistanceY: 10
+  SkeletonObject: {fileID: 0}

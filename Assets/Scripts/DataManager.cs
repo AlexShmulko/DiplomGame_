@@ -13,6 +13,8 @@ public class DataManager : MonoBehaviour
 
     private bool isMiniBossRoomSpawned;
 
+    private int TakenDamage;
+
     private Dictionary<int, GameObject> gameObjectsDictionary = new Dictionary<int, GameObject>();
 
     private static DataManager instance;
@@ -54,6 +56,16 @@ public class DataManager : MonoBehaviour
     public int GetWallCount()
     {
         return wallCount;
+    }
+
+    public void SetDamage(int value)
+    {
+        TakenDamage = value;
+    }
+
+    public int GetDamage()
+    {
+        return TakenDamage;
     }
 
     // Публичный метод для установки значения переменной
