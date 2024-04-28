@@ -13,6 +13,7 @@ TagManager:
   - SoftGround
   - AttributeView
   - Robber
+  - Soul
   layers:
   - Default
   - TransparentFX

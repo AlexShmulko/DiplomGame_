@@ -6,21 +6,21 @@ public class Robber : MonoBehaviour
 {
     public int robberHP = 100;
     public int souls = 3;
-    //private HeroStats heroStats;
+    private SaveManager saveManager;
     public GameObject soul;
 
     private void Start()
     {
-        //heroStats = GameObject.Find("Hero").GetComponent<HeroStats>();
+        saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
     }
 
     public void TakeDamage()
     {
-        //robberHP = robberHP - heroStats.damage;
+        robberHP = robberHP - saveManager.heroDamage;
         if (robberHP < 0) 
         {
+            Instantiate(soul, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
-            //Instantiate(soul);
         }
     }
 }
