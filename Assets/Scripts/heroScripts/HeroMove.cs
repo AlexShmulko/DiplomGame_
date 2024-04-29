@@ -77,7 +77,8 @@ public class HeroMove : MonoBehaviour
 
     private void StopDash()
     {
-        heroStates.isDashing = false;
+        StartCoroutine(WaitAfterMove());
+
     }
 
     public void UpDashForce()
@@ -137,6 +138,12 @@ public class HeroMove : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         groundCollider.isTrigger = false;
+    }
+
+    IEnumerator WaitAfterMove()
+    {
+        yield return new WaitForSeconds(0.1f);
+        heroStates.isDashing = false;
     }
 
 }

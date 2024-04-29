@@ -39,6 +39,13 @@ public class HeroMana : MonoBehaviour
 
     private void StopGetMana() // вызывается в конце анимации исцеления (healing)
     {
+        StartCoroutine(WaitAfterMana());
+        Input.ResetInputAxes();
+    }
+
+    IEnumerator WaitAfterMana()
+    {
+        yield return new WaitForSeconds(0.3f);
         heroStates.isDrinkingMana = false;
     }
 }
