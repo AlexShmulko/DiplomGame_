@@ -44,6 +44,11 @@ public class HeroMove : MonoBehaviour
         {
             rbHero.velocity = new Vector2(rbHero.velocity.x, currentJumpForce);
         }
+
+        if (heroStates.isHealing)
+        {
+            Input.ResetInputAxes();
+        }
     }
 
     public void Move(float dirX)

@@ -36,6 +36,14 @@ public class HeroHeal : MonoBehaviour
 
     private void StopHealing() // вызывается в конце анимации исцеления (healing)
     {
+        StartCoroutine(WaitAfterHeal());
+        Debug.Log("hello");
+        Input.ResetInputAxes();
+    }
+
+    IEnumerator WaitAfterHeal()
+    {
+        yield return new WaitForSeconds(0.3f);
         heroStates.isHealing = false;
     }
 }

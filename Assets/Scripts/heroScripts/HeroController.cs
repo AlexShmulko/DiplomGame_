@@ -61,7 +61,7 @@ public class HeroController : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && groundCheck.onGround)
             {
                 Debug.Log("I press dash!");
                 heroMove.Dash();
