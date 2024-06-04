@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroAttack : MonoBehaviour
+public class HeroAttack : Sounds
 {
     private Animator heroAnimator;
     private HeroStates heroStates;
@@ -28,6 +28,8 @@ public class HeroAttack : MonoBehaviour
         else attackAnimationNumber = 1;
         heroAttackAreaCollider.enabled = true;
         heroAnimator.Play("attack_" + attackAnimationNumber);
+
+        PlaySound(sounds[0]);
     }
 
     private void StopAttack() // вызывается в конце анимации атаки (attack_1 и attack_2)
@@ -35,6 +37,4 @@ public class HeroAttack : MonoBehaviour
         heroStates.isAttacking = false;
         heroAttackAreaCollider.enabled = false;
     }
-
-
 }
