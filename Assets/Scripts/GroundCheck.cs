@@ -10,23 +10,23 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.transform.tag == "SolidGround" || collision.transform.tag == "SoftGround")
+        if(collision.transform.tag == "Block" || collision.transform.tag == "SoftGround")
         {
             onGround = false;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log("Oo");
-        if (collision.transform.tag == "SolidGround" || collision.transform.tag == "SoftGround")
+        if (collision.transform.tag == "Block" || collision.transform.tag == "SoftGround")
         {
             onGround = true;
             ground = collision.gameObject;
         }
-        if (collision.transform.tag == "SolidGround")
+        if (collision.transform.tag == "Block")
         {
-            groundType = "SolidGround";
+            groundType = "Block";
         }
         if (collision.transform.tag == "SoftGround")
         {

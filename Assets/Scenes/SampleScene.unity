@@ -6938,6 +6938,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8859380645744003032, guid: 12364c64fe493594888e3696a2995ff7, type: 3}
+      propertyPath: m_Size.x
+      value: 5.8344984
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859380645744003032, guid: 12364c64fe493594888e3696a2995ff7, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.3684072
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

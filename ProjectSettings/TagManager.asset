@@ -15,6 +15,24 @@ TagManager:
   - Robber
   - Soul
   - Building
+  - Block
+  - MiniBossWall
+  - RoomPoint
+  - Wall
+  - Room_40x20_Ver
+  - Room_20x20
+  - RoomPoint_40x20
+  - StartRoom
+  - Trigger1
+  - Room_20x20_Ver
+  - Room_40x10
+  - CheckPoint
+  - NowRoom
+  - Room_40x20_Hor
+  - Room_20x10
+  - BossRoom
+  - Rooms
+  - MBVariants
   layers:
   - Default
   - TransparentFX
@@ -25,8 +43,8 @@ TagManager:
   - Items
   - Fon
   - Hero
-  - 
-  - 
+  - player
+  - blocks
   - 
   - 
   - 
