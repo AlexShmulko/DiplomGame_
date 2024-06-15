@@ -20,7 +20,7 @@ public class RoomController : MonoBehaviour
 
     DataManager dataManager;
 
-    private int wallCount;
+    public int wallCount;
 
     private bool miniboss;
 
@@ -29,6 +29,8 @@ public class RoomController : MonoBehaviour
     private int wallCountFmB;
     
     private int randomIndexGug;
+
+    private int roomScore = 0;
 
     void Start()
     {
@@ -47,15 +49,22 @@ public class RoomController : MonoBehaviour
 
         wallCount = dataManager.GetWallCount();
 
+        roomScore = dataManager.GetRoomScore();
+
         wallCountFmB = dataManager.GetWallCount();
 
         miniboss = dataManager.GetIsMiniBossRoomSpawned();
 
+        if (wallCountFmB > 20 + roomScore)
+        { 
+            miniboss = false;
+        }
+
         if (miniboss == false)
         {
-            minibossRand = Random.Range(1, 3);
+            //minibossRand = Random.Range(1, 3);
 
-            if ((wallCountFmB > 20 && wallCountFmB < 30) || wallCountFmB > 35/*&& minibossRand == 2*/)
+            if ((wallCountFmB > (20 + roomScore) && wallCountFmB < (30 + roomScore)) /*|| wallCountFmB > (31 + roomScore)*/)
             {   
                 foreach (Transform child in childObjects)
                 {
@@ -81,6 +90,9 @@ public class RoomController : MonoBehaviour
                 ReplaceBossDoor(randomWall);
 
                 availableMiniBoss.Clear();
+
+                roomScore += 20;
+                dataManager.SetRoomScore(roomScore);
             }
         }
 

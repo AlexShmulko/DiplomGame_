@@ -29,6 +29,10 @@ TagManager:
   - RoomPoint
   - StartRoom
   - Trigger1
+  - NowRoom
+  - CheckPoint
+  - RoomPoint_40x20
+  - Building
   layers:
   - Default
   - TransparentFX
@@ -41,7 +45,7 @@ TagManager:
   - Hero
   - player
   - blocks
-  - 
+  - magicBall
   - 
   - 
   - 

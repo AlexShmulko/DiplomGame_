@@ -36,6 +36,13 @@ public class Magic : MonoBehaviour
 
     private void StopCast()
     {
+        StartCoroutine(WaitAfterCast());
+        Input.ResetInputAxes();
+    }
+
+    IEnumerator WaitAfterCast()
+    {
+        yield return new WaitForSeconds(0.3f);
         isCasting = false;
     }
 }

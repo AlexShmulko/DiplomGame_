@@ -44,6 +44,11 @@ public class HeroMove : MonoBehaviour
         {
             rbHero.velocity = new Vector2(rbHero.velocity.x, currentJumpForce);
         }
+
+        if (heroStates.isHealing || heroStates.isDrinkingMana)
+        {
+            Input.ResetInputAxes();
+        }
     }
 
     public void Move(float dirX)
@@ -65,14 +70,17 @@ public class HeroMove : MonoBehaviour
 
     public void Dash()
     {
-        currentDashSpeed = 2f;
+        currentDashSpeed = 3f;
+        heroStates.isRunning = false;
+        heroAnimator.SetBool("isRuning", heroStates.isRunning);
         heroStates.isDashing = true;
         heroAnimator.Play("dash");
     }
 
     private void StopDash()
     {
-        heroStates.isDashing = false;
+        StartCoroutine(WaitAfterMove());
+
     }
 
     public void UpDashForce()
@@ -82,7 +90,7 @@ public class HeroMove : MonoBehaviour
 
     public void DownDashForce()
     {
-        currentDashSpeed = 2f;
+        currentDashSpeed = 3f;
     }
 
 
@@ -118,20 +126,28 @@ public class HeroMove : MonoBehaviour
 
     public void FallFromPlatform(string groundType, GameObject ground)
     {
-
-        Collider2D groundCollider = ground.GetComponent<Collider2D>();
-        if(groundType == "SoftGround")
+        if (ground.TryGetComponent<Collider2D>(out Collider2D col) == true)
         {
-            groundCollider.isTrigger = true;
-            StartCoroutine(RestorGroundCor(groundCollider));
+            Collider2D groundCollider = ground.GetComponent<Collider2D>();
+            if (groundType == "SoftGround")
+            {
+                Debug.Log("aaa!");
+                groundCollider.enabled = false;
+                StartCoroutine(RestorGroundCor(groundCollider));
+            }
         }
-
     }
 
     IEnumerator RestorGroundCor(Collider2D groundCollider)
     {
-        yield return new WaitForSeconds(3f);
-        groundCollider.isTrigger = false;
+        yield return new WaitForSeconds(1.5f);
+        groundCollider.enabled = true;
+    }
+
+    IEnumerator WaitAfterMove()
+    {
+        yield return new WaitForSeconds(0.1f);
+        heroStates.isDashing = false;
     }
 
 }

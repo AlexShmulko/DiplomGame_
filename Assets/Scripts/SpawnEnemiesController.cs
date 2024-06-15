@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class SpawnEnemiesController : MonoBehaviour
 {
     public GameObject EnemyObject;
-    public Enemy enemy;
+    private Enemy enemy;
     private GameObject newObject;
 
     public int robberHP = 100;

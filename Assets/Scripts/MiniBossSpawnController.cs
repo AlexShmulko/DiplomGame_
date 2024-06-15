@@ -51,8 +51,6 @@ public class MiniBossSpawnController : MonoBehaviour
         Right,
         None
     }
-        
-    // Start is called before the first frame update
     void Start()
     {
         PresentRoom = transform.parent;

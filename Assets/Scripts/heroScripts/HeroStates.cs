@@ -17,6 +17,10 @@ public class HeroStates : MonoBehaviour
     public bool isHealing;
     public bool isDrinkingMana;
     public bool isAttacking;
+    public bool inActivZone;
+
+    public bool inShopZone;
+    public bool inChestZone;
 
     void Start()
     {
@@ -29,10 +33,20 @@ public class HeroStates : MonoBehaviour
 
     public bool HeroEmploymentCheck ()
     {
-        if (!isAttacking && !isHealing && !isDrinkingMana && !heroMane.isGettingMana && !isDashing && !magic.isCasting && !isJumping)
+        if (!isAttacking && !isHealing && !isDrinkingMana && !isDashing && !magic.isCasting && !isJumping)
         {
             return true;
         }
+        return false;
+    }
+
+    public bool IsHeroInActiveZone()
+    {
+        if (inChestZone || inShopZone)
+        {
+            return true;
+        }
+
         return false;
     }
 

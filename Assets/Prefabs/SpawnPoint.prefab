@@ -98,10 +98,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -118,4 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b38ccd3e9d249f4ba6ffe1640778400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkeletonObject: {fileID: 0}
+  EnemyObject: {fileID: 0}
+  robberHP: 100
+  souls: 3

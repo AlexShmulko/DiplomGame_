@@ -15,6 +15,8 @@ public class DataManager : MonoBehaviour
 
     private int TakenDamage;
 
+    private int roomScore;
+
     private Dictionary<int, GameObject> gameObjectsDictionary = new Dictionary<int, GameObject>();
 
     private static DataManager instance;
@@ -56,6 +58,15 @@ public class DataManager : MonoBehaviour
     public int GetWallCount()
     {
         return wallCount;
+    }
+    public void SetRoomScore(int value)
+    {
+        roomScore = value;
+    }
+
+    public int GetRoomScore()
+    {
+        return roomScore;
     }
 
     public void SetDamage(int value)

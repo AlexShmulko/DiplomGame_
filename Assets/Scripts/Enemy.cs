@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {   
-    public SpawnEnemiesController sec;
+    private SpawnEnemiesController sec;
     public int robberHP;
     public int souls;
     private SaveManager saveManager;

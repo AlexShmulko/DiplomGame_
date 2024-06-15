@@ -10,6 +10,14 @@ public class StartRoomController : MonoBehaviour
 
     DataManager dataManager;
 
+    public DataManager DataManager
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     void Start()
     {
         dataManager = DataManager.Instance;

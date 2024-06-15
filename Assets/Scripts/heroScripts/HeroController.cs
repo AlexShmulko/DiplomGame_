@@ -33,9 +33,9 @@ public class HeroController : MonoBehaviour
     {
         heroMove.Fall(groundCheck.onGround);
 
-        if (heroStates.HeroEmploymentCheck())
+        if (heroStates.HeroEmploymentCheck() && !interfaceController.isStoreActiv && !interfaceController.levelUpWinActiveState)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) && !heroStates.IsHeroInActiveZone())
             {
                 if (interfaceController.inventoryItemNumber == 0)
                 {
@@ -61,7 +61,7 @@ public class HeroController : MonoBehaviour
             }
 
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && groundCheck.onGround)
             {
                 Debug.Log("I press dash!");
                 heroMove.Dash();
@@ -81,7 +81,7 @@ public class HeroController : MonoBehaviour
             }
 
 
-            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !heroStates.isDashing && !heroStates.isHealing && !magic.isCasting && !heroStates.isAttacking)
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && !heroStates.isDashing && !heroStates.isHealing && !heroStates.isDrinkingMana && !magic.isCasting && !heroStates.isAttacking)
             {
                 heroMove.Move(Input.GetAxisRaw("Horizontal"));
             }

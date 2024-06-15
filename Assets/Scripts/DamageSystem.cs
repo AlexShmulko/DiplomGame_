@@ -14,6 +14,14 @@ public class DamageSystem : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    public DataManager DataManager
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +46,7 @@ public class DamageSystem : MonoBehaviour
         if (rb!= null)
         {
             Debug.Log("blyaat");
-            rb.AddForce(-fp.transform.right.x * new Vector2(20f, 3f));
+            rb.AddForce(-fp.transform.right.x * new Vector2(80f, -30f));
 
             if(fp.transform.right.x == 1){
                 Debug.Log("tratra");

@@ -8,8 +8,6 @@ public class HeroMana : MonoBehaviour
     private HeroStates heroStates;
     private Animator heroAnimator;
 
-    public bool isGettingMana = false;
-
     private void Start()
     {
         saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
@@ -32,13 +30,19 @@ public class HeroMana : MonoBehaviour
             }
             saveManager.manaPotions--;
             heroAnimator.Play("manaDrink");
-            //Input.ResetInputAxes();
             saveManager.SaveData();
         }
     }
 
     private void StopGetMana() // вызывается в конце анимации исцеления (healing)
     {
+        StartCoroutine(WaitAfterMana());
+        Input.ResetInputAxes();
+    }
+
+    IEnumerator WaitAfterMana()
+    {
+        yield return new WaitForSeconds(0.1f);
         heroStates.isDrinkingMana = false;
     }
 }

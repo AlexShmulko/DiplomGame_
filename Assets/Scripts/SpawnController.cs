@@ -54,6 +54,22 @@ public class SpawnController : MonoBehaviour
     
     private Transform PresentRoom;
 
+    public DataManager DataManager
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
+    public RoomsVariants RoomsVariants
+    {
+        get => default;
+        set
+        {
+        }
+    }
+
     public enum Direction
     {
         SmallTop,

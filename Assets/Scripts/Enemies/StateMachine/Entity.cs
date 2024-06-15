@@ -5,7 +5,7 @@ public class Entity : MonoBehaviour
     public D_Entity entityData;
 
     public int facingDirection { get; private set; }
-
+    
     public StateMachine stateMachine;
     public Rigidbody2D rb { get; private set; }
     public Animator anim { get; private set; }
@@ -23,7 +23,7 @@ public class Entity : MonoBehaviour
     [SerializeField]
     private Transform behindCheck;
 
-    private Vector2 velocityWorkspace;
+    public Vector2 velocityWorkspace;
 
     public virtual void Start()
     {
@@ -48,9 +48,9 @@ public class Entity : MonoBehaviour
         stateMachine.CurrentState.PhysicsUpdate();
     }
 
-    public virtual void SetVeloity(float veloity)
+    public virtual void SetVeloity(float velocity)
     {
-        velocityWorkspace.Set(facingDirection * veloity, rb.velocity.y);
+        velocityWorkspace.Set(facingDirection * velocity, rb.velocity.y);
         rb.velocity = velocityWorkspace;
     }
 
