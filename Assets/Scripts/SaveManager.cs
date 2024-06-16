@@ -46,7 +46,7 @@ public class SaveManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HeroHP", 100);
             PlayerPrefs.SetInt("HeroMP", 100);
-            PlayerPrefs.SetInt("CurrentHeroHP", 10);
+            PlayerPrefs.SetInt("CurrentHeroHP", 100);
             PlayerPrefs.SetInt("CurrentHeroMP", 100);
             PlayerPrefs.SetInt("HealPotions", 1);
             PlayerPrefs.SetInt("HealSize", 25);
@@ -81,6 +81,11 @@ public class SaveManager : MonoBehaviour
         {
             PlayerPrefs.DeleteKey("NewGame");
         }
+    }
+
+    public void DeleteSaves()
+    {
+        PlayerPrefs.DeleteKey("NewGame");
     }
 
     public void UpdateData(string key, int value)

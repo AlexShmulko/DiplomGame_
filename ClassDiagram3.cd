@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DamageSystem">
+    <Position X="30" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAQEAEAAAAAAAgAABAIAAgABAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DamageSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataManager">
+    <Position X="33.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJCAICAAAgAAhAAAAAgAIgCABBAAQAiYAkAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DataManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniBossRoomController">
+    <Position X="39.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAACAACAAAAAAAAAAAAAAABAAAAIAAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\MiniBossRoomController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniBossSpawnController">
+    <Position X="37.5" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="MiniBossSpawnController.MiniBossDirection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\MiniBossSpawnController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAEAFIAAEGIEBAAAIAUAAAEgAEAAIAAAQACEgACgBIg=</HashCode>
+      <FileName>Assets\Scripts\MiniBossSpawnController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiniBossVariants">
+    <Position X="35.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\MiniBossVariants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomController">
+    <Position X="35.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAABAiAICAAAAQAAJAAAAEgABAIIQCgABgAAAgAAAA=</HashCode>
+      <FileName>Assets\Scripts\RoomController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomsVariants">
+    <Position X="30" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\RoomsVariants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnController">
+    <Position X="31.75" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="SpawnController.Direction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\SpawnController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="SpawnController.BottomDirection" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\SpawnController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <AssociationLine Name="DataManager1" Type="DataManager" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="32.375" Y="2.5" />
+        <Point X="32.375" Y="1.5" />
+        <Point X="33.75" Y="1.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>SBEAFICAEGIUJAAAIAEAAAEgAEAAIABAAACEgSCgBIg=</HashCode>
+      <FileName>Assets\Scripts\SpawnController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DataManager1" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SpawnEnemiesController">
+    <Position X="26" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAgQBQAAAAQABAAAAAAAIAAAAAAAACAI=</HashCode>
+      <FileName>Assets\Scripts\SpawnEnemiesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartRoomController">
+    <Position X="39.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAGAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\StartRoomController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

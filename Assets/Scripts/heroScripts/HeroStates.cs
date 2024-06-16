@@ -17,8 +17,10 @@ public class HeroStates : MonoBehaviour
     public bool isHealing;
     public bool isDrinkingMana;
     public bool isAttacking;
-    public bool inActivZone;
+    public bool isDied;
 
+
+    public bool inActivZone;
     public bool inShopZone;
     public bool inChestZone;
 

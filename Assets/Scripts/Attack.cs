@@ -16,6 +16,7 @@ public class Attack : MonoBehaviour
         Enemy enemy = collision.GetComponent<Enemy>();
         if (collision.gameObject.CompareTag("barrel"))
         {
+            Debug.Log("Урон");
             anim = collision.gameObject.GetComponent<Animator>();
             anim.Play("barrelDestruction");
         }
