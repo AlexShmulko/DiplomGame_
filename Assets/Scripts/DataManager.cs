@@ -34,6 +34,18 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    public void ResetValues()
+    {
+        myVariable = 0;
+        roomId = 0;
+        wallCount = 0;
+        lastRoomId = 0;
+        isMiniBossRoomSpawned = false;
+        TakenDamage = 0;
+        roomScore = 0;
+        gameObjectsDictionary.Clear();
+    }
+
     /*private void Awake()
     {
         // Пример создания массива из 10 игровых объектов при инициализации DataManager

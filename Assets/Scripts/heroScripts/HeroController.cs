@@ -33,7 +33,7 @@ public class HeroController : MonoBehaviour
     {
         heroMove.Fall(groundCheck.onGround);
 
-        if (heroStates.HeroEmploymentCheck() && !interfaceController.isStoreActiv && !interfaceController.levelUpWinActiveState)
+        if (heroStates.HeroEmploymentCheck() && !interfaceController.isStoreActiv && !interfaceController.levelUpWinActiveState && !heroStates.isDied)
         {
             if (Input.GetKeyDown(KeyCode.F) && !heroStates.IsHeroInActiveZone())
             {

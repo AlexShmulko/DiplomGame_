@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2402555512837700802}
   - component: {fileID: 5685895835835634952}
   - component: {fileID: -4403119993838910349}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: EnergyImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
