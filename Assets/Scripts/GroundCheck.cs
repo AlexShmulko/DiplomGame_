@@ -18,7 +18,6 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Oo");
         if (collision.transform.tag == "Block" || collision.transform.tag == "SoftGround")
         {
             onGround = true;

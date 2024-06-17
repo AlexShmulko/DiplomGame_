@@ -37,7 +37,7 @@ public class DamageSystem : MonoBehaviour
     void Update()
     {
         a = dataManager.GetDamage();
-        Debug.Log(a);
+        //Debug.Log(a);
         if (a > 0)
         {
             ForceHero();

@@ -31,7 +31,7 @@ public class SaveManager : MonoBehaviour
     public int heroIntelligence;
 
     public float dashSpeed = 13f;
-    public float jumpForce = 15f;
+    public float jumpForce = 20f;
     public int heroDamage = 15;
 
     void Start()
@@ -62,8 +62,8 @@ public class SaveManager : MonoBehaviour
             PlayerPrefs.SetInt("SetStartValue", 1);
 
             PlayerPrefs.SetInt("GreenStones", 0);
-            PlayerPrefs.SetInt("VioletStones", 2);
-            PlayerPrefs.SetInt("OrangeStones", 3);
+            PlayerPrefs.SetInt("VioletStones", 0);
+            PlayerPrefs.SetInt("OrangeStones", 0);
 
             SetVariables();    
         }
@@ -118,7 +118,7 @@ public class SaveManager : MonoBehaviour
         heroIntelligence = PlayerPrefs.GetInt("HeroIntelligence");
 
         dashSpeed = 13f + heroAgility * 0.5f;
-        jumpForce = 15f;
+        jumpForce = 20f;
         heroDamage = 15 + heroStrength;
     }
 

@@ -15,6 +15,7 @@ public class HeroController : MonoBehaviour
     private Magic magic;
 
     private InterfaceController interfaceController;
+    private Pause pauseController;
 
     void Start()
     {
@@ -27,13 +28,14 @@ public class HeroController : MonoBehaviour
         saveManager = GameObject.Find("SaveManager").GetComponent<SaveManager>();
         groundCheck = GameObject.Find("GroundCheck").GetComponent<GroundCheck>();
         interfaceController = GameObject.Find("Interface").GetComponent<InterfaceController>();
+        pauseController = GameObject.Find("PauseController").GetComponent<Pause>();
     }
 
     void Update()
     {
         heroMove.Fall(groundCheck.onGround);
 
-        if (heroStates.HeroEmploymentCheck() && !interfaceController.isStoreActiv && !interfaceController.levelUpWinActiveState && !heroStates.isDied)
+        if (heroStates.HeroEmploymentCheck() && !interfaceController.isStoreActiv && !interfaceController.levelUpWinActiveState && !heroStates.isDied && !pauseController.isPauseActive)
         {
             if (Input.GetKeyDown(KeyCode.F) && !heroStates.IsHeroInActiveZone())
             {
