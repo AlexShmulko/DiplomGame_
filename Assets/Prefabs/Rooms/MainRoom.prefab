@@ -2576,6 +2576,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3113234247795755898, guid: af58823285bea08448909eeade073b21, type: 3}
     - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: souls
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: robberHP
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
       propertyPath: EnemyObject
       value: 
       objectReference: {fileID: 1542899722381589927, guid: c7c304042aab5bb47829598a803c547c, type: 3}
@@ -2825,6 +2833,14 @@ PrefabInstance:
       propertyPath: soul
       value: 
       objectReference: {fileID: 3113234247795755898, guid: af58823285bea08448909eeade073b21, type: 3}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: souls
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: robberHP
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
       propertyPath: EnemyObject
       value: 

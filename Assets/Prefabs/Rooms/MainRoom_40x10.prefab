@@ -4673,6 +4673,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: souls
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: robberHP
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
       propertyPath: EnemyObject
       value: 
       objectReference: {fileID: 1542899722381589927, guid: c7c304042aab5bb47829598a803c547c, type: 3}
@@ -5161,6 +5169,14 @@ PrefabInstance:
     - target: {fileID: 8309975949292261550, guid: 8917bdab20c00a2459ef9ec58c01a7e3, type: 3}
       propertyPath: bottomDirection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309975949292261550, guid: 8917bdab20c00a2459ef9ec58c01a7e3, type: 3}
+      propertyPath: cameraChangePos.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309975949292261550, guid: 8917bdab20c00a2459ef9ec58c01a7e3, type: 3}
+      propertyPath: playerChangePos.y
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

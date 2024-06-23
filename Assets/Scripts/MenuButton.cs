@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
-    private int hubIndex = 0;
+    private int hubIndex = 2;
     private int trainingIndex = 1;
-    private int menuIndex = 2;
+    private int menuIndex = 0;
     public SaveManager saveManager;
 
     private HeroStates heroStates;

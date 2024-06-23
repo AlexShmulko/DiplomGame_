@@ -22,7 +22,7 @@ public class ChestOpen : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F) && heroStates.inChestZone)
             {
-                saveManager.coins += 30 * saveManager.orangeStones;
+                saveManager.coins += 500 * saveManager.orangeStones;
                 saveManager.SaveData();
                 animator.Play("openGoldChest");
                 isOpen = true;

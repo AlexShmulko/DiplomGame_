@@ -23,7 +23,7 @@ public class E2_MoveState : MoveState
     {
         base.LogicUpdate();
 
-        Debug.Log(isPlayerInMaxAgroRange);
+        //Debug.Log(isPlayerInMaxAgroRange);
 
         if (isPlayerInMaxAgroRange)
         {

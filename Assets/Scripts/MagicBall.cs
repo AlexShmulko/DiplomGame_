@@ -26,7 +26,7 @@ public class MagicBall : MonoBehaviour
         {
             enemy.TakeDamage();
         }
-        if (!collision.CompareTag("Building"))
+        if (!collision.CompareTag("Building") && !collision.CompareTag("RoomPoint"))
         {
             Instantiate(magicImpact, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);

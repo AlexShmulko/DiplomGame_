@@ -1,0 +1,4 @@
+repository "DiplomGame_DarkSouls4@MsAlexRus@cloud"
+  path "/"
+    br "/main"
+    co "/main"

@@ -4819,6 +4819,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: souls
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: robberHP
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
       propertyPath: EnemyObject
       value: 
       objectReference: {fileID: 2005501744377566167, guid: b68fcdc01b4db0140962d639c094265b, type: 3}
@@ -4969,6 +4977,14 @@ PrefabInstance:
     - target: {fileID: 937150566805328939, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: souls
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
+      propertyPath: robberHP
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 2645248592827768229, guid: 4516ba29d6455e044b9878446c9b1224, type: 3}
       propertyPath: EnemyObject

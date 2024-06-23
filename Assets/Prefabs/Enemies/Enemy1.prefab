@@ -30,7 +30,6 @@ Transform:
   m_LocalScale: {x: 0.44, y: 0.44, z: 0.44}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3990905571872005431}
   - {fileID: 3465687715176898588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77,7 +76,7 @@ GameObject:
   - component: {fileID: 7695604251043933719}
   m_Layer: 0
   m_Name: Alive
-  m_TagString: Untagged
+  m_TagString: Robber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +94,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3990905571872005431}
   - {fileID: 6331834194056194140}
   - {fileID: 4997424616423333129}
   - {fileID: 916327603177192275}
@@ -188,8 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635eb2bb49cb3b543beb82447160758f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robberHP: 100
-  souls: 3
+  robberHP: 80
+  souls: 10
   soul: {fileID: 3113234247795755898, guid: af58823285bea08448909eeade073b21, type: 3}
   isDead: 0
 --- !u!61 &4551865823192493089
@@ -256,10 +256,10 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: b138ecc4967c4df418f32e8c86f0bc49, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 520
+    m_Bits: 264
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAttackAreaCollider: {fileID: 5065349807718666548}
-  HeroObject: {fileID: 0}
+  HeroObject: {fileID: 5830180909436180703, guid: 427b42ac2557d6444878c73d30c6d029, type: 3}
 --- !u!1 &3814474645426829871
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 3990905571872005431}
   - component: {fileID: 5065349807718666548}
   - component: {fileID: 3688563592026549567}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ Transform:
   m_LocalScale: {x: 1.0157499, y: 1.0157499, z: 1.0157499}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3131467250104933783}
+  m_Father: {fileID: 3465687715176898588}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &5065349807718666548
 PolygonCollider2D:
@@ -326,7 +326,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
